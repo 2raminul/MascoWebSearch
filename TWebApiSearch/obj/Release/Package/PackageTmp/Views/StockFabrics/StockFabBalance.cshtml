@@ -1,0 +1,722 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "StockFabBalance";
+}
+<link href="~/Content/Customcss/style.css" rel="stylesheet" />
+<link href="~/Content/css/select2.min.css" rel="stylesheet" />
+<link href="~/Content/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/select2.min.js"></script>
+<script src="~/Scripts/sweetalert.min.js"></script>
+<style>
+    .divGreige {
+        color: #AAAAAA;
+        display: block;
+        position: relative;
+        /*float: left;*/
+        /*width: 100%;
+        height: 100px;*/
+    }
+
+    input[type=radio] {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .divGreige label {
+        display: block;
+        position: relative;
+        font-weight: 300;
+        font-size: 1.35em;
+        padding: 20px 25px 25px 53px;
+        margin: 10px auto;
+        height: 30px;
+        z-index: 9;
+        cursor: pointer;
+        -webkit-transition: all 0.25s linear;
+    }
+
+    .divGreige:hover label {
+        color: black;
+    }
+
+    .check {
+        display: block;
+        position: absolute;
+        border: 5px solid #AAAAAA;
+        border-radius: 100%;
+        height: 25px;
+        width: 25px;
+        top: 30px;
+        left: 20px;
+        z-index: 5;
+        transition: border .25s linear;
+        -webkit-transition: border .25s linear;
+    }
+
+    .divGreige:hover .check {
+        border: 5px solid black;
+    }
+
+    .check::before {
+        display: block;
+        position: absolute;
+        content: '';
+        border-radius: 100%;
+        height: 10px;
+        width: 10px;
+        top: 2px;
+        left: 3px;
+        margin: auto;
+        transition: background 0.25s linear;
+        -webkit-transition: background 0.25s linear;
+    }
+
+    input[type=radio]:checked ~ .check {
+        border: 5px solid #008b8b;
+    }
+
+        input[type=radio]:checked ~ .check::before {
+            background: #008b8b;
+        }
+
+    input[type=radio]:checked ~ label {
+        color: #008b8b;
+    }
+
+    .select2-container--default {
+        width: 100% !important;
+    }
+
+
+    /*#tblDetails {
+        margin-left: -7%;
+        margin-right: -7%;
+    }*/
+</style>
+<div class="panel panel-green">
+    <div class="panel-heading">
+        <h4 class="text-center">Stock Fabrics Balance View</h4>
+    </div>
+    <div class="panel-body">
+        <div class="row" style="background: beige">
+            <div class="col-md-offset-4 col-md-6">
+                <div class="form-group row">
+                    <div class="divGreige">
+                        <div class="col-sm-6">
+                            <input type="radio" id="rdGreige" name="selector" checked/>
+                            <label class="control-label" for="rdGreige">Greige</label>
+                            <div class="check"></div>
+                        </div>
+                    </div>
+                    <div class="divGreige">
+                        <div class="col-sm-6">
+                            <input type="radio" id="rdDyed" name="selector"/>
+                            <label class="control-label" for="rdDyed">Dyed</label>
+                            <div class="check"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div><br/>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Unit Name</label>
+                    <div class="col-sm-9">
+                        <select id="ddlUnit" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Buyer</label>
+                    <div class="col-sm-9">
+                        <select id="ddlBuyer" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Job</label>
+                    <div class="col-sm-9">
+                        <select id="ddlJob" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Order</label>
+                    <div class="col-sm-9">
+                        <select id="ddlOrder" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Style</label>
+                    <div class="col-sm-9">
+                        <select id="ddlStyle" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3">Fabrics Type</label>
+                    <div class="col-sm-9">
+                        <select id="ddlfabType" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3">GSM</label>
+                    <div class="col-sm-9">
+                        <select id="ddlGsm" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Yarn Type</label>
+                    <div class="col-sm-9">
+                        <select id="ddlYarnType" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Count</label>
+                    <div class="col-sm-9">
+                        <select id="ddlCount" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Composition</label>
+                    <div class="col-sm-9">
+                        <select id="ddlComposition" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-4 col-md-3">
+                <input type="button" id="btnView" class="btn btn-warning btn-lg" value="View" style="width: 100%; margin-left: 15%"/>
+            </div>
+        </div><br/>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive" style="height: 500px">
+                    <table id="tblDetails" class="table table-bordered" style="display: none">
+                        <thead>
+                        <tr>
+                            <th>Buyer</th>
+                            <th>Job</th>
+                            <th>Order</th>
+                            <th>Fabric Type</th>
+                            <th>GSM</th>
+                            <th>Yarn Name</th>
+                            <th>Lot</th>
+                            <th>Brand</th>
+                            <th>SL.</th>
+                            <th>Fin. Dia</th>
+                            <th>Fab. Color</th>
+                            <th>UOM</th>
+                            <th>Qty</th>
+                            <th>Status</th>
+                            <th>Unit</th>
+                            <th>Location</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $('#ddlBuyer').select2();
+    $('#ddlJob').select2();
+    $('#ddlOrder').select2();
+    $('#ddlStyle').select2();
+    $('#ddlfabType').select2();
+    $('#ddlGsm').select2();
+    $('#ddlYarnType').select2();
+    $('#ddlCount').select2();
+    $('#ddlComposition').select2();
+    GetUnitList();
+    GetBuyerList();
+    GetFabType();
+    GetGsmList();
+    GetYarnType();
+    GetComposition();
+    GetCount();
+    $('#ddlBuyer').on('change', function() {
+        GetJobListByBuyer();
+        GetOrderListByBuyer();
+        GetStyleListByBuyer();
+        GetFabType();
+        GetGsmList();
+        GetComposition();
+    });
+    $('#ddlOrder').on('change', function() {
+        GetFabType();
+        GetGsmList();
+        GetComposition();
+    });
+    $('#ddlJob').on('change', function() {
+        GetFabType();
+        GetGsmList();
+        GetComposition();
+        loadOrderById($('#ddlJob').val(), 'job', $('#ddlBuyer').val());
+        loadStyleById($('#ddlJob').val(), 'job', $('#ddlBuyer').val());
+
+    });
+    $('#ddlfabType').on('change', function() {
+        GetComposition();
+    });
+    $('#ddlGsm').on('change', function() {
+        GetComposition();
+    });
+    $('#ddlYarnType').on('change', function() {
+        GetComposition();
+    });
+    $('#btnView').on('click', function () {
+        $('#tblDetails tbody').empty();
+        $('#tblDetails').hide();
+        if ($('#ddlfabType').val() == "") {
+            swal("","Select Fabrics type");
+        } else {
+            var unitNo = $('#ddlUnit').val() != '' ? $('#ddlUnit').val() : 0;
+            var buyerId = $('#ddlBuyer').val() != '' ? $('#ddlBuyer').val() : 0;
+            var orderId = $('#ddlOrder').val() != undefined ? $('#ddlOrder').val() : 0;
+            var jobId = $('#ddlJob').val() != undefined ? $('#ddlJob').val() : 0;
+            var fabId = $('#ddlfabType').val() != '' ? $('#ddlfabType option:selected').text() : '';
+            var gsmId = $('#ddlGsm').val() != '' ? $('#ddlGsm').val() : 0;
+            var yarnType = $('#ddlYarnType').val() != '' ? $('#ddlYarnType option:selected').text() :'';
+            var countId = $('#ddlCount').val() != '' ? $('#ddlCount option:selected').text() : '';
+            var composition = $('#ddlComposition').val() != '' ? $('#ddlComposition option:selected').text() : '';
+            var yarnStatus = '';
+            if ($('#rdGreige').is(':checked')) {
+                yarnStatus = 'Greige';
+            }
+            if ($('#rdDyed').is(':checked')) {
+                yarnStatus = 'Dyed';
+            }
+            $.ajax({
+                url: '@Url.Action("GetTableData", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "unitNo": unitNo, "buyerId": buyerId, "orderId": orderId, "jobId": jobId, "fabType": fabId, "gsmId": gsmId,
+                "ihId": yarnType, "countId": countId, "composition": composition, "yarnStatus": yarnStatus
+            }),
+            success: function (results) {
+                if (results.Data.length > 0) {
+                    loadDataTable(results.Data);
+                } else {
+                    swal("","No Data Found!!");
+                }
+               
+            },
+            error: function (data) {
+
+            }
+
+
+            });
+        }
+    });
+
+    function loadDataTable(data) {
+        $('#tblDetails').show();
+        for (var i = 0; i < data.length; i++) {
+            let tr = "<tr>";
+            tr += "<td>" + data[i].BuyerName + "</td>";
+            tr += "<td>" + data[i].Job + "</td>";
+            tr += "<td>" + data[i].Order + "</td>";
+            tr += "<td>" + data[i].FabType + "</td>";
+            tr += "<td>" + data[i].GSM + "</td>";
+            tr += "<td>" + data[i].YarnName + "</td>";
+            tr += "<td>" + data[i].Lot + "</td>";
+            tr += "<td>" + data[i].Brand + "</td>";
+            tr += "<td>" + data[i].SL + "</td>";
+            tr += "<td>" + data[i].FinDia + "</td>";
+            tr += "<td>" + data[i].FabColor + "</td>";
+            tr += "<td>" + data[i].UOM + "</td>";
+            tr += "<td>" + data[i].Qty + "</td>";
+            tr += "<td>" + data[i].Status + "</td>";
+            tr += "<td>" + data[i].Unit + "</td>";
+            tr += "<td>" + data[i].Location + "</td>";
+            tr += "</tr>";
+            $("#tblDetails tbody").append(tr);
+        }
+    }
+    function GetUnitList() {
+
+        $.ajax({
+            url: '@Url.Action("GetUnitList", "MascoSearch")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#ddlUnit').get(0).options.length = 0;
+                $('#ddlUnit').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlUnit').get(0).options[$('#ddlUnit').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlUnit').val(results.SelectedVal);
+                let unit = $('#ddlUnit').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+    function GetBuyerList() {
+
+        $.ajax({
+            url: '@Url.Action("GetBuyerList", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#ddlBuyer').get(0).options.length = 0;
+                $('#ddlBuyer').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlBuyer').get(0).options[$('#ddlBuyer').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlBuyer').val(results.SelectedVal);
+                let buyer = $('#ddlBuyer').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+    function GetJobListByBuyer() {
+        var buyerId = $('#ddlBuyer').val();
+        $.ajax({
+            url: '@Url.Action("GetJobListByBuyer", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "buyerId": buyerId }),
+            success: function (results) {
+
+                $('#ddlJob').get(0).options.length = 0;
+                $('#ddlJob').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlJob').get(0).options[$('#ddlJob').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlJob').val(results.SelectedVal);
+                let job = $('#ddlJob').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+    function GetOrderListByBuyer() {
+        var buyerId = $('#ddlBuyer').val();
+        $.ajax({
+            url: '@Url.Action("GetOrderListByBuyer", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "buyerId": buyerId }),
+            success: function (results) {
+
+                $('#ddlOrder').get(0).options.length = 0;
+                $('#ddlOrder').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlOrder').get(0).options[$('#ddlOrder').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlOrder').val(results.SelectedVal);
+                let order = $('#ddlOrder').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+    function GetStyleListByBuyer() {
+        var buyerId = $('#ddlBuyer').val();
+        $.ajax({
+            url: '@Url.Action("GetStyleListByBuyer", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "buyerId": buyerId }),
+            success: function (results) {
+
+                $('#ddlStyle').get(0).options.length = 0;
+                $('#ddlStyle').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlStyle').get(0).options[$('#ddlStyle').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlStyle').val(results.SelectedVal);
+                let style = $('#ddlStyle').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+
+    function loadOrderById(id,type,BuyerId) {
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: '@Url.Action("LoadOrderById","StockFabrics")',
+            dataType: "JSON",
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify({ "ID": id, "Type": type, "BuyerId": BuyerId }),
+            success: function (data) {
+                var result = data.Data;
+                var content = ''; var temp = ''; // '<option id="-1">Select.......</option>';
+                $.each(result, function (i, obj) {
+                    content += '<option value="' + obj.ID + '" >' + obj.Text + '</option>';
+                    if (result.length === 1) {
+                        temp = obj.Value;
+                    }
+                });
+                $('#ddlOrder option').remove();
+                $('#ddlOrder').append(content);
+                var check = 0;
+                if (result.Count === 1) {
+                    $('#ddlOrder option:selected').val(temp);
+
+                }
+                else {
+                    $.each(result, function (i, obj) {
+                        if (obj.Value1 != 0) {
+                            check = check + 1;
+                            temp = obj.Value;
+                        }
+                        if (check === 2) {
+                            return false;
+                        }
+                    });
+                    if (check === 1) {
+                        $("#ddlOrder option:selected").val(temp);
+                    }
+                }
+            }
+        });
+    }
+
+    function loadStyleById(id, type, buyerId) {
+        $("#ddlStyle").val('');
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: '@Url.Action("LoadStyleById","StockFabrics")',
+            dataType: "JSON",
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify({ "ID": id, "Type": type, "BuyerId": buyerId }),
+            success: function(data) {
+                var result = data.d;
+
+                var content = '';
+                var temp = '';
+                $.each(result, function(i, obj) {
+                    content += '<option value="' + obj.ID + '" >' + obj.Text + '</option>';
+                    if (result.length === 1) {
+                        temp = obj.Value;
+                    }
+                });
+                $('#ddlStyle option').remove();
+                $('#ddlStyle').append(content);
+
+                if (result.length === 1) {
+                    $("#ddlStyle option:selected").val(temp);
+                }
+            },
+            error: function(a, b, c) { alert("Loading Problem"); }
+        });
+    }
+    function GetFabType() {
+        var buyerId = $('#ddlBuyer').val() != undefined ? $('#ddlBuyer').val() : 0;
+        var orderId = $('#ddlOrder').val() != undefined ? $('#ddlOrder').val() : 0;
+        var jobId = $('#ddlJob').val() != undefined ? $('#ddlJob').val() : 0;
+        $.ajax({
+            url: '@Url.Action("GetFabricsType", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "buyerId": buyerId, "orderId": orderId, "jobId": jobId }),
+            success: function (results) {
+                $('#ddlfabType').get(0).options.length = 0;
+                $('#ddlfabType').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlfabType').get(0).options[$('#ddlfabType').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlfabType').val(results.SelectedVal);
+                let fab = $('#ddlfabType').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+    function GetGsmList() {
+        var buyerId = $('#ddlBuyer').val() != undefined ? $('#ddlBuyer').val() : 0;
+        var orderId = $('#ddlOrder').val() != undefined ? $('#ddlOrder').val() : 0;
+        var jobId = $('#ddlJob').val() != undefined ? $('#ddlJob').val() : 0;
+        $.ajax({
+            url: '@Url.Action("GetGSMList", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "buyerId": buyerId, "orderId": orderId, "jobId": jobId }),
+            success: function (results) {
+                $('#ddlGsm').get(0).options.length = 0;
+                $('#ddlGsm').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlGsm').get(0).options[$('#ddlGsm').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlGsm').val(results.SelectedVal);
+                let fab = $('#ddlGsm').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+    function GetYarnType() {
+        $.ajax({
+            url: '@Url.Action("GetYarnType", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#ddlYarnType').get(0).options.length = 0;
+                $('#ddlYarnType').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlYarnType').get(0).options[$('#ddlYarnType').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlYarnType').val(results.SelectedVal);
+                let yarn = $('#ddlYarnType').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+    function GetCount() {
+
+        $.ajax({
+            url: '@Url.Action("Getcount", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#ddlCount').get(0).options.length = 0;
+                $('#ddlCount').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlCount').get(0).options[$('#ddlCount').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlCount').val(results.SelectedVal);
+                let count = $('#ddlCount').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+    function GetComposition() {
+        var buyerId = $('#ddlBuyer').val() != undefined ? $('#ddlBuyer').val() : 0;
+        var orderId = $('#ddlOrder').val() != undefined ? $('#ddlOrder').val() : 0;
+        var jobId = $('#ddlJob').val() != undefined ? $('#ddlJob').val() : 0;
+        var fabId = $('#ddlfabType').val() != undefined ? $('#ddlfabType').val() : 0;
+        var gsmId = $('#ddlGsm').val() != undefined ? $('#ddlGsm').val() : 0;
+        var yarnId = $('#ddlYarnType').val() != undefined ? $('#ddlYarnType').val() : 0;
+        $.ajax({
+            url: '@Url.Action("GetCompositionList", "StockFabrics")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "buyerId": buyerId, "orderId": orderId, "jobId": jobId, "fabId": fabId, "gsmId": gsmId, "ihId": yarnId }),
+            success: function (results) {
+                $('#ddlComposition').get(0).options.length = 0;
+                $('#ddlComposition').get(0).options[0] = new Option('Select---------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlComposition').get(0).options[$('#ddlComposition').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlComposition').val(results.SelectedVal);
+                let count = $('#ddlComposition').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+</script>
+

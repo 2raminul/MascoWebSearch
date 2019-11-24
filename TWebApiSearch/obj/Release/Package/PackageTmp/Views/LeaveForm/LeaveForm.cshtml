@@ -1,0 +1,296 @@
+﻿@{
+   Layout = "~/Views/Shared/_layoutA4.cshtml";
+    ViewBag.Title = "LeaveForm";
+}
+<style>
+    .date {
+        border: none;
+        font-size:15px;
+    }
+    .divSign {
+        margin-top: 60px;
+    }
+    span{
+        font-weight:bold;
+        font-size:12px;
+    }
+    .fromcontrol{
+        display: inline;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 0.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    padding: -0.625rem .75rem !important;
+    }
+    #table{
+        text-align:center;
+        border:1px solid black;
+        width:100%;
+    }
+    #table thead td, #table thead th {
+         border:1px solid black;
+    padding: 0.55rem;
+}
+    .table thead th {
+     border:1px solid black;
+    font-size: 14px;
+    padding: 8px;
+}
+
+#table td, .table th {
+     border:1px solid black;
+     height:40px;
+}
+.inputInline{
+    display:inline;
+}
+label{
+    font-size:12px;
+}
+   input:disabled {
+        background-color: transparent;
+    }
+    input[type=checkbox] {
+        vertical-align: middle;
+
+    }
+    .col-md-10 {
+
+    }
+    .col-md-2 {
+
+    }
+</style>
+<div id="" style="margin-bottom:15px;">
+    <div class="row rowMarginTop" style="text-align:center">
+        <div class="col-md-2">
+            <img src="~/Content/Images/MascoLogo.png" height="75" width="55" style="text-align:left;" />
+        </div>
+        <div class="col-md-10">
+            <h4 style="display:inline;border:1px solid black;padding-left: 49px;padding-right: 45px;font-weight: bold;">MASCO GROUP</h4>
+            <h5 style="margin-top:15px;">LEAVE APPLICATION FORM (ছুটির আবেদন পত্র)</h5>
+            @*<hr style="width: 450px;border-top: 1px solid black !important;">*@
+        </div>
+    </div>
+    <div class="row" style="margin-top:-10px;">
+        <div class="col-md-12">
+            <hr style="border-top: 1px solid black !important;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p style="font-weight:bold; text-align: left">SL NO: LAF- @DateTime.Now.Year
+                <span style="float: right">
+                    UNIT NAME <strong>:</strong>
+                    <span id="unitName" class="unitName" style="display:inline;border:1px solid black;font-weight: bold;font-size: 16px;padding: 8px;"></span>
+                </span>
+                </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>APPLICANT'S ID(আবেদনকারীর আইডি) <strong>:</strong> <span class="empId" id="empId"></span></label>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6" style="text-align:left;">
+            <label class="label">NAME(নাম) <strong>:</strong> <span id="empName" class="Name"></span></label>
+        </div>
+        <div class="col-md-6" style="">
+            <label class="label">DESIGNATION(পদবী) <strong>:</strong> <span id="empDesignation"></span></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:left;">
+            <label class="label" style="width:287px;">DEPARTMENT(বিভাগ) <strong>:</strong> <span id="empDepartment" class="Department">Department</span></label>
+        </div>
+        <div class="col-md-4" style="text-align:left;padding-left: 30px;">
+            <label class="label">SECTION(শাখা) <strong>:</strong> <span id="empSection" class="Section">Section</span></label>
+        </div>
+        <div class="col-md-4" style="text-align:right;padding-left: 0px;">
+            <label class="label">DOJ (যোগদান) <strong>:</strong> <span id="empDOJ" class="DOJ">Date of Join</span></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label class="label" >LEAVE REQUIRED(ছুটির প্ৰয়োজন) <strong>:</strong> </label>
+            <label>FROM(হতে) </label>
+            <input type="text" class="date datePick" id="txtDateFrom" style="border-bottom: 1px black dotted; width: 90px;">
+            <label>TO(পর্যন্ত) </label>
+            <input type="text" class="date datePick" id="txtDateTo" style="border-bottom: 1px black dotted;width: 90px;">
+            <label>TOTAL(মোট) </label>
+            <label id="totalDay" style="padding:15px;">0</label>
+            <label>DAYS(দিন)</label>
+        </div>
+    </div>
+    <div class="row rowMarginTop">
+        <div class="col-md-6">
+            <label class="label">APPLICATION DATE( আবেদনের তারিখ) <strong>:</strong> </label>
+            <input type="text" class="date" id="txtApplicationDate" style="border-bottom:1px black dotted; width: 100px;" disabled="disabled"/>
+        </div>
+        <div class="col-md-6"  style="padding-left:1px;">
+            <label class="label">APPLICATION ACCEPTANCE DATE(জমা দেয়ার তারিখ) <strong>:</strong> </label>
+            <input type="text" class="date" id="txtApplicationDate" style="border-bottom:1px black dotted; width: 95px;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>LEAVE TYPE(ছুটির ধরণ)</label>
+            <label style="padding:15px;">
+                <input type="checkbox" class="radio" name="Leave" id="chkCL" data-Avail="" data-MaxBalance="" />CASUAL(নৈমিত্তিক)
+            </label>
+            <label>
+                <input type="checkbox" class="radio" name="Leave" id="chkSL"  data-Avail="" data-MaxBalance="" />MEDICAL(অসুস্থতা)
+            </label>
+            <label style="padding:15px;">
+                <input type="checkbox" class="radio" name="Leave" id="chkEL"  data-Avail="" data-MaxBalance="" />E/L(অর্জিত)
+            </label>
+            <label>
+                <input type="checkbox" class="radio" name="Leave" id="chkML"  data-Avail="" data-MaxBalance="" />M/L(মাতৃত্ত্বকালীন)
+            </label>
+            <label  style="padding:15px;">
+                <input type="checkbox" class="radio" name="Leave" id="chkLWP" data-Avail="" data-MaxBalance="" />LWP(বিনা বেতনে ছুটি)
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th colspan="3">APPROVED LEAVE STATUS</th>
+                    </tr>
+                    <tr>
+                        <th>TOTAL ENTITLE </th>
+                        <th>ALREADY ENJOYED </th>
+                        <th>BALANCE </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="tbltdTotalEntile"></td>
+                        <td id="tbltdAlreadyEnjoyed"></td>
+                        <td id="tbltdBalance"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row"  style="margin-top:5px;">
+        <div class="col-md-12">
+            <label>LEAVE REASON(ছুটির কারণ) <strong>:</strong>  </label>
+            <input type="text" class="inputInline fromcontrol" id="txtLeaveReason" style="width:630px;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>ADDRESS DURING LEAVE(ছুটিতে থাকাকালীন ঠিকানা) <strong>:</strong> </label>
+            <input type="text" class="inputInline fromcontrol" id="txtLeaveDuringLeave" style="width:498px;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>JOINING AFTER LEAVE(কাজে যোগদানের তারিখ) <strong>:</strong> </label>
+            <input type="text" class="inputInline datePick fromcontrol" id="txtJoinAfterLeave" style="width:auto;" />
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-3">
+            <label><span style="border-top:1px solid black;">APPLICANT</span></label>
+        </div>
+        <div class="col-md-3">
+            <label><span style="border-top:1px solid black;">CONCERN HEAD</span></label>
+        </div>
+        <div class="col-md-3">
+            <label><span style="border-top:1px solid black;">HR DEPARTMENT</span></label>
+        </div>
+        <div class="col-md-3">
+            <label><span style="border-top:1px solid black;">AUTHORIZED BY</span></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <span>(BEFORE SIGNING THIS DOCUMENT, VERIFY THAT THE CONTENT YOU ARE SIGNING IS CORRECT)</span><br />
+            <label>(স্বাক্ষর করার আগে বিষয়বস্তুর যথার্থতা নিশ্চিত করুন)</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <hr style="border-top: 1px dotted black !important;" />
+        </div>
+    </div>
+    <div class="row" style="text-align:center">
+        <div class="col-md-2">
+            <img src="~/Content/Images/MascoLogo.png" height="75" width="55" style="text-align:left;" />
+        </div>
+        <div class="col-md-10">
+            <h6 style="margin-top:5px;">LEAVE APPLICATION FORM (ছুটির আবেদন পত্র)</h6>
+            <h6>APPLICANT COPY(আবেদনকারীর কপি)</h6>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-12">
+            <p style="font-weight:bold; text-align: left">SL NO: LAF- @DateTime.Now.Year
+                <span style="float: right">
+                    UNIT NAME <strong>:</strong>
+                    <span id="unitName" class="unitName" style="display:inline;border:1px solid black;font-weight: bold;font-size: 16px;padding: 8px;"></span>
+                </span>
+            </p>
+            @*<h6 style="font-weight:bold;">SL NO: LAF- @DateTime.Now.Year</h6>
+            <span style="text-align:right">
+                <label class="label">UNIT NAME <strong>:</strong> </label>
+                <h6 class="unitName" style="display: inline;border:1px solid black;padding-left:49px;padding-right: 45px;font-weight: bold;"></h6>
+            </span>*@
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>APPLICANT'S ID(আবেদনকারীর আইডি) <strong>:</strong> <span id="empId" class="empId"></span></label>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:left;">
+            <label class="label" style="width:287px;">DEPARTMENT(বিভাগ) <strong>:</strong> <span id="empDepartment" class="Department">Department</span></label>
+        </div>
+        <div class="col-md-4" style="text-align:left;padding-left: 30px;">
+            <label class="label">SECTION(শাখা) <strong>:</strong> <span id="empSection" class="Section">Section</span></label>
+        </div>
+        <div class="col-md-4" style="text-align:right;padding-left: 0px;">
+            <label class="label">DOJ (যোগদান) <strong>:</strong> <span id="empDOJ" class="DOJ">Date of Join</span></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <span>IS ALLOWED<span id="isAllowDays" style="padding:15px"></span> DAYS OF LEAVE EFFECT FROM <span id="isAllowFrom" style="padding:15px"></span>To <span id="isAllowTo" style="padding:15px"></span></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <span style="float:right;">HR Department</span>
+        </div>
+    </div>
+    
+</div>
+<div class="form-group row">
+    @Html.Partial("_layoutPageButton")
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+            var base = '@Url.Content("~/")';
+        $.getScript('../AppJs/Document%20Download%20Section/LeaveForm.js',
+               function (data, textStatus, jqxhr) {
+                   console.log('Script File Load Status=' + jqxhr.status);
+               });
+    </script>
+}

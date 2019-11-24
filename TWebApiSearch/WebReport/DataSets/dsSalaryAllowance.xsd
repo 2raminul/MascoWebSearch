@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSalaryAllowance"
+		targetNamespace="http://tempuri.org/dsSalaryAllowance.xsd"
+		elementFormDefault="qualified"
+		xmlns="http://tempuri.org/dsSalaryAllowance.xsd"
+		xmlns:mstns="http://tempuri.org/dsSalaryAllowance.xsd"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="dsSalaryAllowance">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="FloorName" type="xs:string" />
+        <xs:element name="EMP_ID" type="xs:int" />
+        <xs:element name="EMP_ENAME" type="xs:string" />
+        <xs:element name="EmpBName" type="xs:string" />
+        <xs:element name="EmpCatNo" type="xs:int" />
+        <xs:element name="EmpCatName" type="xs:string" />
+        <xs:element name="EmpPrevCatNo" type="xs:int" />
+        <xs:element name="EmpPrevCatName" type="xs:string" />
+        <xs:element name="EMP_CODE" type="xs:string" />
+        <xs:element name="AllowMonth" type="xs:date" />
+        <xs:element name="Allowancetype" type="xs:string" />
+        <xs:element name="Head" type="xs:string"/>
+        <xs:element name="Amount" type="xs:double"/>
+        <xs:element name="AllowDate" type="xs:date"/>
+        <xs:element name="EntryDate" type="xs:date"/>
+        <xs:element name="DOJ" type="xs:date"/>
+        <xs:element name="AffectiveDate" type="xs:date" />
+        <xs:element name="IncreamentDate" type="xs:date" />
+        <xs:element name="SalHeadAffecDate" type="xs:date" />
+        <xs:element name="AllowAmount" type="xs:double" />
+        <xs:element name="Gross" type="xs:double" />
+        <xs:element name="AGross" type="xs:double" />
+        <xs:element name="Basic" type="xs:double" />
+        <xs:element name="HRent" type="xs:double" />
+        <xs:element name="Food" type="xs:double" />
+        <xs:element name="Medical" type="xs:double" />
+        <xs:element name="Convence" type="xs:double" />
+        <xs:element name="Conveyance" type="xs:double" />
+        <xs:element name="GroupNo" type="xs:int" />
+        <xs:element name="GroupId" type="xs:string" />
+        <xs:element name="GroupEName" type="xs:string" />
+        <xs:element name="GroupEAddress" type="xs:string" />
+        <xs:element name="GroupBName" type="xs:string" />
+        <xs:element name="GroupBAddress" type="xs:string" />
+        <xs:element name="UnitNo" type="xs:int" />
+        <xs:element name="UnitId" type="xs:string" />
+        <xs:element name="UnitEName" type="xs:string" />
+        <xs:element name="UnitEAddress" type="xs:string" />
+        <xs:element name="UnitBName" type="xs:string" />
+        <xs:element name="UnitBAddress" type="xs:string" />
+        <xs:element name="DeptNo" type="xs:int" />
+        <xs:element name="DeptId" type="xs:string" />
+        <xs:element name="DeptEName" type="xs:string" />
+        <xs:element name="DeptBName" type="xs:string" />
+        <xs:element name="SectNo" type="xs:int" />
+        <xs:element name="SubSectEName" type="xs:string" />
+        <xs:element name="PrevSectNo" type="xs:int" />
+        <xs:element name="PrevSectEName" type="xs:string" />
+        <xs:element name="SubSectBName" type="xs:string" />
+        <xs:element name="SectBName" type="xs:string" />
+        <xs:element name="SectId" type="xs:int" />
+        <xs:element name="SectEName" type="xs:string" />
+        <xs:element name="DesigEName" type="xs:string" />
+        <xs:element name="PrevDesigEName" type="xs:string" />
+        <xs:element name="DesigBName" type="xs:string" />
+        <xs:element name="SubSectNo" type="xs:int" />
+        <xs:element name="SalNo" type="xs:int" />
+        <xs:element name="PreCareOf" type="xs:string" />
+        <xs:element name="PreVill" type="xs:string" />
+        <xs:element name="PrePost" type="xs:string" />
+        <xs:element name="PreThanaName" type="xs:string" />
+        <xs:element name="PreDisName" type="xs:string" />
+        <xs:element name="PreDivName" type="xs:string" />
+        <xs:element name="PerCareOf" type="xs:string" />
+        <xs:element name="PerVill" type="xs:string" />
+        <xs:element name="PerPost" type="xs:string" />
+        <xs:element name="PerThanaName" type="xs:string" />
+        <xs:element name="PerDivName" type="xs:string" />
+        <xs:element name="PerDisName" type="xs:string" />
+        <xs:element name="GradName" type="xs:string" />
+        <xs:element name="PrevGradName" type="xs:string" />
+        <xs:element name="MonthOfServPeriod" type="xs:int" />
+        <xs:element name="BonusAmount" type="xs:float" />
+        <xs:element name="BonusMonthName" type="xs:string" />
+        <xs:element name="BonusTypeName" type="xs:string" />
+        <xs:element name="BonusCatName" type="xs:string" />
+        <xs:element name="ServiceTime" type="xs:string" />
+        <xs:element name="GAmt" type="xs:float" />
+        <xs:element name="TotAdvance" type="xs:float" />
+        <xs:element name="GrandAmt" type="xs:float" />
+        <xs:element name="SUnitNo" type="xs:int" />
+        <xs:element name="SDesignNo" type="xs:int" />
+        <xs:element name="SDeptNo" type="xs:int" />
+        <xs:element name="SSectNo" type="xs:int" />
+        <xs:element name="CostUnit" type="xs:int" />
+        <xs:element name="CompanyName" type="xs:string" />
+
+
+
+        <xs:element name="TotalHrDeduction" type="xs:double" />
+        <xs:element name="NetPayable" type="xs:double" />
+        <xs:element name="TotalDedForAbs" type="xs:double" />
+        <xs:element name="TotalDeduction" type="xs:double" />
+        <xs:element name="TotalPayable" type="xs:double" />
+        <xs:element name="TlCHDays" type="xs:double" />
+        <xs:element name="TlGHDays" type="xs:double" />
+        <xs:element name="TlWHDays" type="xs:double" />
+        <xs:element name="TlAbsForLtDays" type="xs:double" />
+        <xs:element name="TlOSDays" type="xs:double" />
+        <xs:element name="TlAbsDays" type="xs:double" />
+        <xs:element name="TlLtDays" type="xs:double" />
+        <xs:element name="TlPrDays1" type="xs:double" />
+        <xs:element name="TlPrDays2" type="xs:double" />
+        <xs:element name="TlPrDays3" type="xs:double" />
+        <xs:element name="TlWorkDays" type="xs:double" />
+        <xs:element name="TlMonthDays" type="xs:double" />
+        <xs:element name="LWP" type="xs:double" />
+        <xs:element name="ML" type="xs:double" />
+        <xs:element name="EL" type="xs:double" />
+        <xs:element name="SL" type="xs:double" />
+        <xs:element name="CL" type="xs:double" />
+        <xs:element name="TlOTAmt" type="xs:double" />
+        <xs:element name="TlOT" type="xs:string" />
+        <xs:element name="PerHrOTAmt" type="xs:float" />
+        <xs:element name="AppraisalDed" type="xs:double" />
+        <xs:element name="AppraisalAdd" type="xs:double" />
+        <xs:element name="OtherDeduc" type="xs:double" />
+        <xs:element name="SpecDeduc" type="xs:double" />
+        <xs:element name="NormDeduc" type="xs:double" />
+        <xs:element name="InctvBonus" type="xs:double" />
+        <xs:element name="OtherBonus" type="xs:double" />
+
+        <xs:element name="FestvBonus" type="xs:double" />
+        <xs:element name="ProdBonus" type="xs:double" />
+        <xs:element name="AttBonus" type="xs:double" />
+        <xs:element name="Tax" type="xs:double" />
+        <xs:element name="PF" type="xs:double" />
+        <xs:element name="Loan" type="xs:double" />
+        <xs:element name="Advance" type="xs:double" />
+        <xs:element name="HolDayBill" type="xs:double" />
+        <xs:element name="NightBill" type="xs:double" />
+        <xs:element name="TiffinBill" type="xs:double" />
+        <xs:element name="TranspAllow" type="xs:double" />
+        <xs:element name="MobileAllow" type="xs:double" />
+        <xs:element name="Arreas" type="xs:double" />
+        <xs:element name="Customs" type="xs:double" />
+        <xs:element name="NoOfHolDay" type="xs:int" />
+        <xs:element name="NoOfNight" type="xs:int" />
+        <xs:element name="LineName" type="xs:string" />
+        <xs:element name="TlAbsHr" type="xs:float" />
+        <xs:element name="StampDed" type="xs:double" />
+        <xs:element name="ELBenefit" type="xs:double" />
+        <xs:element name="MLBenefit" type="xs:double" />
+        <xs:element name="LastBenefit" type="xs:double" />
+        <xs:element name="BankAmt" type="xs:double" />
+        <xs:element name="PaidAmt" type="xs:double" />
+        <xs:element name="BankName" type="xs:string" />
+        <xs:element name="BranchName" type="xs:string" />
+        <xs:element name="AccountNo" type="xs:string" />
+
+        <xs:element name="image_stream" type="xs:base64Binary"/>
+        <xs:element name="Empimage" type="xs:base64Binary"/>
+        <xs:element name="EmpSign" type="xs:base64Binary"/>
+        <xs:element name="AuthSign" type="xs:base64Binary"/>
+
+        <xs:element name="SRangefrom" type="xs:double" />
+
+        <xs:element name="EDD" type="xs:string" />
+        <xs:element name="Lvfrom" type="xs:string" />
+        <xs:element name="Lvto" type="xs:string" />
+        <xs:element name="AftrLDOJ" type="xs:string" />
+        <xs:element name="DOP" type="xs:string" />
+        <xs:element name="FstInstallment" type="xs:string" />
+        <xs:element name="SndInstallment" type="xs:string" />
+        <xs:element name="Basis" type="xs:string" />
+        <xs:element name="Month1" type="xs:string" />
+        <xs:element name="Month2" type="xs:string" />
+        <xs:element name="Month3" type="xs:string" />
+        <xs:element name="Salary1" type="xs:double" />
+        <xs:element name="Salary2" type="xs:double" />
+        <xs:element name="Salary3" type="xs:double" />
+        <xs:element name="Bonous1" type="xs:double" />
+        <xs:element name="Bonous2" type="xs:double" />
+        <xs:element name="Bonous3" type="xs:double" />
+        <xs:element name="Age" type="xs:string" />
+        <xs:element name="ServiceLength" type="xs:string" />
+        <xs:element name="PerdayAvg" type="xs:double" />
+        <xs:element name="FstInstallmntAmnt" type="xs:double" />
+        <xs:element name="SecondInstallmentAmnt" type="xs:double" />
+        <xs:element name="TotalPayableAmnt" type="xs:double" />
+
+        <xs:element name="Total" type="xs:int" />
+        <xs:element name="Leave" type="xs:int" />
+        <xs:element name="Present" type="xs:int" />
+        <xs:element name="Absent" type="xs:int" />
+        <xs:element name="BuildingName" type="xs:string" />
+
+        <xs:element name="Payment_Gross" type="xs:decimal" />
+        <xs:element name="Paid_Days" type="xs:float" />
+        <xs:element name="CalculationFrom" type="xs:date" />
+        <xs:element name="Payment_Date" type="xs:date" />
+        <xs:element name="total_amount" type="xs:decimal" />
+        <xs:element name="net_ASmount" type="xs:decimal" />
+        <xs:element name="IsPaid" type="xs:boolean" />
+        <xs:element name="Corp" type="xs:boolean" />
+        <xs:element name="catagory" type="xs:string" />
+        <xs:element name="Year" type="xs:date" />
+
+        <xs:element name="IncAmount" type="xs:float" />
+        <xs:element name="IncAmount1" type="xs:float" />
+        <xs:element name="IncAmount2" type="xs:float" />
+        <xs:element name="CashAmount" type="xs:float" />
+        <xs:element name="HolDayAmt" type="xs:float" />
+        <xs:element name="TotalCash" type="xs:float" />
+        <xs:element name="NetCash" type="xs:float" />
+
+
+        <xs:element name="Remarks" type="xs:string" />
+        <xs:element name="IncRate" type="xs:float" />
+        <xs:element name="IncRate1" type="xs:float" />
+        <xs:element name="IncRate2" type="xs:float" />
+
+
+        <xs:element name="MobBill" type="xs:int" />
+        <xs:element name="MobPaid" type="xs:int" />
+        <xs:element name="InternetBill" type="xs:int" />
+        <xs:element name="IntPaid" type="xs:int" />
+        <xs:element name="OtherBill" type="xs:int" />
+        <xs:element name="OtherPaid" type="xs:int" />
+        <xs:element name="BillMobNo" type="xs:string" />
+
+        <xs:element name="January" type="xs:decimal" />
+        <xs:element name="February" type="xs:decimal" />
+        <xs:element name="March" type="xs:decimal" />
+        <xs:element name="April" type="xs:decimal" />
+        <xs:element name="May" type="xs:decimal" />
+        <xs:element name="June" type="xs:decimal" />
+        <xs:element name="July" type="xs:decimal" />
+        <xs:element name="August" type="xs:decimal" />
+        <xs:element name="September" type="xs:decimal" />
+        <xs:element name="October" type="xs:decimal" />
+        <xs:element name="November" type="xs:decimal" />
+        <xs:element name="December" type="xs:decimal" />
+        <xs:element name="BankBonusAmt" type="xs:decimal" />
+        <xs:element name="CallForCash" type="xs:int" />
+        <xs:element name="Month" type="xs:string" />
+        <xs:element name="Thousand" type="xs:int" />
+        <xs:element name="FiveHundred" type="xs:int" />
+        <xs:element name="OneHundred" type="xs:int" />
+        <xs:element name="Fifty" type="xs:int" />
+        <xs:element name="Twenty" type="xs:int" />
+        <xs:element name="Ten" type="xs:int" />
+        <xs:element name="Five" type="xs:int" />
+        <xs:element name="Two" type="xs:int" />
+        <xs:element name="One" type="xs:int" />
+        <xs:element name="ReqFor" type="xs:int" />
+        <xs:element name="TDays" type="xs:int" />
+        <xs:element name="PDays" type="xs:int" />
+        <xs:element name="UDays" type="xs:int" />
+        <xs:element name="UnpaidAmt" type="xs:double" />
+        <xs:element name="ShiftName" type="xs:string" />
+        <xs:element name="OT" type="xs:string" />
+        <xs:element name="TotalWorker" type="xs:int" />
+        <xs:element name="No_OT" type="xs:int" />
+        <xs:element name="One_OT" type="xs:int" />
+        <xs:element name="U_OT" type="xs:int" />
+        <xs:element name="ActualOT" type="xs:double" />
+        <xs:element name="AvgOT" type="xs:double" />
+        <xs:element name="PunchCount" type="xs:int" />
+
+        <xs:element name="ComNo" type="xs:int" />
+        <xs:element name="USCode" type="xs:string" />
+        <xs:element name="CAddress" type="xs:string" />
+        <xs:element name="TINNo" type="xs:string" />
+        <xs:element name="EmpTINNo" type="xs:string" />
+
+        <xs:element name="CheckSubject" type="xs:string" />
+        <xs:element name="HO" type="xs:string" />
+        <xs:element name="Crp" type="xs:string" />
+        <xs:element name="Dyeing" type="xs:string" />
+        <xs:element name="Printing" type="xs:string" />
+        <xs:element name="MEL" type="xs:string" />
+        <xs:element name="Picasso" type="xs:string" />
+        <xs:element name="MCL" type="xs:string" />
+        <xs:element name="G1" type="xs:string" />
+        <xs:element name="G2" type="xs:string" />
+        <xs:element name="MTL" type="xs:string" />
+        <xs:element name="CKL" type="xs:string" />
+        <xs:element name="SEL" type="xs:string" />
+        <xs:element name="TFL" type="xs:string" />
+        <xs:element name="MPL" type="xs:string" />
+        <xs:element name="Exports" type="xs:string" />
+        <xs:element name="Wazuddin" type="xs:string" />
+        <xs:element name="Knitting" type="xs:string" />
+        <xs:element name="MOL" type="xs:string" />
+
+        <xs:element name="HouseRentAmt" type="xs:double" />
+        <xs:element name="FestivalAmt" type="xs:double" />
+        <xs:element name="MedicalAmt" type="xs:double" />
+        <xs:element name="Others" type="xs:double" />
+        <xs:element name="TaxableAmount" type="xs:double" />
+        <xs:element name="TaxableAmt" type="xs:double" />
+        <xs:element name="RentFreeAccomodationValue" type="xs:double" />
+        <xs:element name="FreeConveyanceValue" type="xs:double" />
+        <xs:element name="FreePassageValue" type="xs:double" />
+        <xs:element name="DomesticServicePayment" type="xs:double" />
+        <xs:element name="ProvidentFundValue" type="xs:double" />
+        <xs:element name="AnyBenifitValue" type="xs:double" />
+        <xs:element name="MinTaxAmnt" type="xs:double" />
+        <xs:element name="TaxEligibleAmnt" type="xs:double" />
+        <xs:element name="BasicAmt" type="xs:double" />
+
+        <xs:element name="CashAmt" type="xs:double" />
+        <xs:element name="PaymentMode" type="xs:string" />
+        <xs:element name="BankPart" type="xs:string" />
+        <xs:element name="C_TinNo" type="xs:string" />
+        <xs:element name="Entertainment" type="xs:double" />
+        <xs:element name="TaxInvestAmt" type="xs:double" />
+        <xs:element name="TaxCreditAmt" type="xs:double" />
+        <xs:element name="TotalTaxPay" type="xs:double" />
+        <xs:element name="NetAmtPay" type="xs:double" />
+        <xs:element name="TotalDeductAmt" type="xs:double" />
+        <xs:element name="TaxAdjustAmt" type="xs:double" />
+        <xs:element name="BonusAll" type="xs:double" />
+        <xs:element name="BonusWithoutTin" type="xs:double" />
+        <xs:element name="BonusWithoutTinPer" type="xs:double" />
+        <!--<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />
+				<xs:element name="TaxEligibleAmnt" type="xs:double" />-->
+        <xs:element name="Challan" type="xs:string" />
+        <xs:element name="PaymentDate" type="xs:string" />
+        <xs:element name="ChallanAmount" type="xs:double" />
+        <xs:element name="CABangla" type="xs:string" />
+        <xs:element name="PerAddress" type="xs:string" />
+        <xs:element name="ColName" type="xs:string" />
+        <xs:element name="AcHouseRent" type="xs:double" />
+        <xs:element name="AcMedical" type="xs:double" />
+        <xs:element name="VehicleAmt" type="xs:double" />
+        <xs:element name="AcVehicleAmt" type="xs:double" />
+        <xs:element name="ConveyanceAmt" type="xs:double" />
+        <xs:element name="AcConveYance" type="xs:double" />
+
+        <xs:element name="NHouseRent" type="xs:double" />
+        <xs:element name="NMedical" type="xs:double" />
+        <xs:element name="NVehicleAmt" type="xs:double" />
+        <xs:element name="NPVehicleAmt" type="xs:double" />
+
+        <xs:element name="January1" type="xs:string" />
+        <xs:element name="February1" type="xs:string" />
+        <xs:element name="March1" type="xs:string" />
+        <xs:element name="April1" type="xs:string" />
+        <xs:element name="May1" type="xs:string" />
+        <xs:element name="June1" type="xs:string" />
+        <xs:element name="July1" type="xs:string" />
+        <xs:element name="August1" type="xs:string" />
+        <xs:element name="September1" type="xs:string" />
+        <xs:element name="October1" type="xs:string" />
+        <xs:element name="November1" type="xs:string" />
+        <xs:element name="December1" type="xs:string" />
+        <xs:element name="TaxAuthoName" type="xs:string" />
+        <xs:element name="TaxAuthoDesg" type="xs:string" />
+        <xs:element name="TaxAuthoSec" type="xs:string" />
+
+        <xs:element name="NameTax" type="xs:string" />
+        <xs:element name="DesignationTax" type="xs:string" />
+        <xs:element name="PhoneEmailTax" type="xs:string" />
+        <xs:element name="SealDateTax" type="xs:string" />
+        <xs:element name="status" type="xs:string"/>
+        <xs:element name="EmpCatName1" type="xs:string"/>
+
+        <xs:element name="G3" type="xs:float" />
+        <xs:element name="G4" type="xs:float" />
+        <xs:element name="G5" type="xs:float" />
+        <xs:element name="G6" type="xs:float" />
+        <xs:element name="G7" type="xs:float" />
+        <xs:element name="G8" type="xs:float" />
+        <xs:element name="G9" type="xs:float" />
+        <xs:element name="G10" type="xs:float" />
+        <xs:element name="G11" type="xs:float" />
+        <xs:element name="G12" type="xs:float" />
+        <xs:element name="G13" type="xs:float" />
+        <xs:element name="G14" type="xs:float" />
+        <xs:element name="G15" type="xs:float" />
+
+        <xs:element name="AvgS" type="xs:float" />
+        <xs:element name="AvgP" type="xs:float" />
+        <xs:element name="AvgL" type="xs:float" />
+        <xs:element name="AvgA" type="xs:float" />
+        <xs:element name="AvgAPer" type="xs:float" />
+        <xs:element name="OThrs" type="xs:float" />
+        <xs:element name="AvgOTDay" type="xs:float" />
+        <xs:element name="AvgOTRate" type="xs:float" />
+        <xs:element name="TaxZone" type="xs:float" />
+        <xs:element name="TaxCircle" type="xs:float" />
+        <xs:element name="ReturnDate" type="xs:float" />
+        <xs:element name="SerialNo" type="xs:float" />
+        <xs:element name="CompanyTin" type="xs:float" />
+        <xs:element name="MobileNetPayable" type="xs:decimal"/>
+        <xs:element name="MobilebankingAccount" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

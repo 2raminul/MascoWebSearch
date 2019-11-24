@@ -1,0 +1,128 @@
+﻿@{
+    Layout = "~/Views/Shared/_layoutA4.cshtml";
+    ViewBag.Title = "ShortLeaveForm";
+}
+<style>
+    .date{
+        border:none;
+    }
+    .row{
+        margin-top:10px;
+    }
+    .divSign{
+        margin-top:60px;
+    }
+</style>
+<div id="divHRCopy" style="margin-bottom:15px;">
+        <div class="row"  style="text-align:center">
+            <div class="col-md-2">
+                <img src="~/Content/Images/MascoLogo.png" height="75" width="55" style="text-align:left;" />
+            </div>
+            <div class="col-md-10" style="padding-left:1px;">
+                <h4 style="display:inline" id="unitName"></h4>
+                <p id="unitAddress"></p>
+                <h5><span style="border:1px solid black;padding-left:30px;padding-right:30px;padding-top:6px;padding-bottom:6px;">HOURLY LEAVE CLEARANCE FROM</span> (HR copy)</h5>
+            </div>
+        </div>
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-6" style="text-align:left;">
+            <label class="label">ID: <span id="empId"></span></label><br />
+            <label class="label">Section: <span id="empSection"></span></label><br />
+            <label class="label">Date: <input type="text" class="date" id="txtDate" style="border-bottom:1px black dashed;"/></label>
+        </div>
+        <div class="col-md-6" style="">
+            <label class="label">Name: <span id="empName">name</span></label><br />
+            <label class="label">Designation: <span id="empDesignation">Designation</span></label><br />
+            <label class="label">Time from: <input type="text" id="txtTimeFrom" class="date" style="border-bottom:1px black solid;width:50px;" />
+            am/pm to <input type="text" id="txtTimeTo" class="date"  style="border-bottom:1px black solid;width:50px;" /> am/pm
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label class="label" >Reason: </label>
+            <input type="text" class="date" id="txtReason" style="border-bottom:1px black solid;width:92%" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label class="label">Concern Person's Name &amp; Designation: </label>
+            <input type="text" class="date" id="txtConcernPersonDesignation" style="border-bottom:1px black dotted;width:100%" />
+        </div>
+    </div>
+    <div class="row divSign">
+        <div class="col-md-4">
+            <label class="label">Employee Sign &amp; Date </label>
+        </div>
+        <div class="col-md-4">
+            <label class="label">Authorized Person Sign &amp; Date </label>
+        </div>
+        <div class="col-md-4">
+            <label class="label">HR Authority Sign &amp; Date </label>
+        </div>
+    </div>
+</div>
+<div id="divEmployeeCopy"  style="margin-top:50px;">
+    <div class="row" style="text-align:center">
+        <div class="col-md-2">
+            <img src="~/Content/Images/MascoLogo.png" height="75" width="55" style="text-align:left;" />
+        </div>
+        <div class="col-md-10" style="padding-left:1px;">
+            <h4 style="display:inline" id="EmployeeCopyunitName"></h4>
+            <p id="EmployeeCopyunitAddress"></p>
+            <h5><span style="border:1px solid black;padding-left:30px;padding-right:30px;padding-top:6px;padding-bottom:6px;">HOURLY LEAVE CLEARANCE FROM</span> (Employee copy)</h5>
+        </div>
+    </div>
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-6" style="text-align:left;">
+            <label class="label">ID: <span id="EmployeeCopyempId"></span></label><br />
+            <label class="label">Section: <span id="EmployeeCopyempSection"></span></label><br />
+            <label class="label">Date: <input type="text" class="date" id="EmployeeCopytxtDate" style="border-bottom:1px black dashed;"/></label>
+        </div>
+        <div class="col-md-6" style="">
+            <label class="label">Name: <span id="EmployeeCopyempName"></span></label><br />
+            <label class="label">Designation: <span id="EmployeeCopyempDesignation"></span></label><br />
+            <label class="label">
+                Time from: <input type="text" id="EmployeeCopytxtTimeFrom" class="date" style="border-bottom:1px black solid;width:50px;"  />
+                am/pm to <input type="text" id="EmployeeCopytxtTimeTo" class="date" style="border-bottom:1px black solid;width:50px;" /> am/pm
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label class="label">Reason: </label>
+            <input type="text" class="date" id="EmployeeCopytxtReason" style="border-bottom:1px black solid;width:92%" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label class="label">Concern Person's Name &amp; Designation: </label>
+            <input type="text" class="date" id="EmployeeCopytxtConcernPersonDesignation" style="border-bottom:1px black dotted;width:100%" />
+        </div>
+    </div>
+    <div class="row divSign">
+        <div class="col-md-4">
+            <label class="label">Employee Sign &amp; Date </label>
+        </div>
+        <div class="col-md-4">
+            <label class="label">Authorized Person Sign &amp; Date </label>
+        </div>
+        <div class="col-md-4">
+            <label class="label">HR Authority Sign &amp; Date </label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    @Html.Partial("_layoutPageButton")
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+            var base = '@Url.Content("~/")';
+        $.getScript('../AppJs/Document%20Download%20Section/ShortLeaveForm.js',
+               function (data, textStatus, jqxhr) {
+                   console.log('Script File Load Status=' + jqxhr.status);
+               });
+    </script>
+}

@@ -1,0 +1,112 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "AdvanceHistory";
+}
+
+
+<link href="~/Content/Customcss/style.css" rel="stylesheet" />
+<link href="~/Content/Customcss/tblStyle.css" rel="stylesheet" />
+<div class="panel panel-primary">
+    <div class="panel-heading">Advance History</div>
+    <div class="panel panel-body">
+        <div class="form-group row">
+            <label class="col-md-2"> Financial Year</label>
+            <div class="col-md-8">
+                <select class="form-control" id="ddlFinalcialYear">
+                    <option value=""></option>
+                </select>
+
+            </div>
+        </div>
+        <table class="table table-bordered  tblHeader tblbody" id="gvAdvanceHistory" style="text-align: center">
+            <thead>
+            <tr>
+                <th>SL</th>
+                <th>Month</th>
+                <th  style='text-align:right'>Paid Amount</th>
+                <th>Method</th>
+            </tr>
+            </thead>
+            <tbody style="text-align: right"></tbody>
+            <tfoot style="border: 2px dotted #cccccc;background-color: slategray;color: #ffffff;font-size: 17px;font-weight: bold;text-align: right;">
+                <tr>
+                    <td></td>
+                    <td style="text-align: center"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        getFinalcialYear();
+    });
+        function GetAdvanceHistory(finalcialYear) {
+            $.ajax({
+                url: '@Url.Action("GetAdvanceHistory", "MascoSearch")',
+                type: "POST",
+                data: JSON.stringify({ "finalcialYear": finalcialYear }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (results) {
+                    var PaidAmt = 0;
+                    $("#gvAdvanceHistory tbody").empty();
+                    var ddd = JSON.parse(results);
+                    for (var i = 0; i < ddd.length; i++) {
+                        let tr = "<tr>";
+                        tr += "<td style='text-align:center'>" + (i + 1) + "</td>";
+                        tr += "<td style='text-align:center'>" + ddd[i].AdvMonth + "</td>";
+                        tr += "<td>" + ddd[i].PaidAmt + "</td>";
+                        tr += "<td style='text-align:center'>" + ddd[i].Method + "</td>";
+                        tr += "</tr>";
+                        PaidAmt += parseInt(ddd[i].PaidAmt);
+                        $("#gvAdvanceHistory tbody").append(tr);
+                    }
+                    var tRow = $("#gvAdvanceHistory tfoot tr");
+                    $(tRow).find('td:eq(1)').text("Total");
+                    $(tRow).find('td:eq(2)').text(PaidAmt);
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+        function getFinalcialYear() {
+            $.ajax({
+                url: '@Url.Action("GetFinalCialYear", "MascoSearch")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (results) {
+                    $('#ddlFinalcialYear').get(0).options.length = 0;
+                    $('#ddlFinalcialYear').get(0).options[0] = new Option('Select--------', '');
+                    $.map(results.Data, function (item) {
+                        $('#ddlFinalcialYear').get(0).options[$('#ddlFinalcialYear').get(0).options.length] = new Option(item.Text, item.ID);
+                    });
+
+                    $('#ddlFinalcialYear').val(results.SelectedVal);
+                    let finalcialYear = $('#ddlFinalcialYear').val();
+
+                    GetAdvanceHistory(finalcialYear);
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+        $('#ddlFinalcialYear').change(function () {
+            let finalcialYear = $(this).val();
+            if (finalcialYear == "") { $("#gvAdvanceHistory tbody").empty(); return false; }
+            else {
+                GetAdvanceHistory(finalcialYear);
+            }
+        });
+       
+    
+</script>

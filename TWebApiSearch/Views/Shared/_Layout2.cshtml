@@ -1,0 +1,294 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/CustomAnimation.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="@Url.Content("~/Content/site.css")"/>
+    <link href="~/Content/css/easy-loading.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Customcss/style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Customcss/btnStyle.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/Customcss/logoTextAnimation.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/layoutStyle2.css")"/>
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/jquery-ui-1.12.1/jquery-ui.css")" rel="stylesheet" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-3.2.1.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/popper.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/respond.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.blockUi.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/sweetalert.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/select2.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/jquery-ui-1.12.1/jquery-ui.js")"></script>
+    <script src="~/Content/AdditionalJS/easy-loading.js"></script>
+   
+    <style type="text/css">
+         footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #F3A159;
+  color: white;
+  text-align: center;
+  }
+  .loading {
+    width: 40px;
+    height: 40px;
+    margin: 10px auto 0 auto;
+      background-color: black;
+    background: url('../../Content/Images/waiting.gif') no-repeat;
+
+}
+  .select2 {
+      width: 100% !important;
+  }
+  .w3-animate-right {
+    padding: 0.8% 0.8% 5% 0.8%;
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-blue w3-animate-top">
+    <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="/Content/Images/MascoLogo.png" style="width: 2.4rem; background: white;" />
+    @*<span style="padding-left: 5px;">MASCO GROUP</span>*@
+        <div class="main-container">
+            <div class="first-container share">
+                <h1><span id="one">M</span><span>A</span><span>S</span><span>C</span><span>O</span> <span>G</span><span>R</span><span>O</span><span>U</span><span>P</span></h1>
+            </div>
+            @*<div class="second-container share">
+                <h1><span>W</span><span>e</span> <span>M</span><span>o</span><span>v</span><span>e</span></h1>
+            </div>*@
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">        
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item">
+                @*@Html.ActionLink("Masco Search", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="btn btn-new" href="@Url.Action("LogOut", "Home")"><i class="fa fa-power-off" style="padding-right: 11px"></i>Logout</a>
+                @*<input type="text" class="form-control fontAwesome" autocomplete="off" id="txtMascosearch" style="border-radius: 2.25rem; border: 2px solid #f17253;; background-clip: unset;" placeholder="&#xF002; Search">*@
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row rowSizer">
+    <div class="col-md-2" style="padding: 0px; margin-top: 3.78rem;">
+        <div class="left w3-animate-left text-center">
+            <br>
+            <br>
+            <img class="" src="@Session["userImage"]" style="border-radius: 50%; padding: 3px; height: 100px; width: 100px; border: 3px solid #fff;"/>
+            <hr style="width: 90%;"/>
+            <label style="color: white; margin-bottom: 0">@Session["EmpName"]</label>
+            <hr style="width: 90%;"/>
+            <label style="color: white; margin-bottom: 0">@Session["DesigEName"]</label>
+            <hr style="width: 90%;"/>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <a class="skew-button" style="margin-bottom: 10px;" id="btnBackToPrevious" href=""><span>Back To Previous</span></a>
+            <a class="skew-button" style="margin-bottom: 10px;" href="@Url.Action("Index", "Home")"><span>Back To Home</span></a>
+            @*<button  btn btn-new class="skew-button"><span>Challenge instructions</span></button>*@
+        </div>
+
+    </div>
+
+    <div class="col-md-10" style="padding: 0; margin-top: 3.78rem;">
+        <div class="w3-animate-right">
+            @RenderBody()
+
+
+            <footer>
+                <p style="margin-bottom: 0.5rem; font-size: 12px;">&copy; @DateTime.Now.Year - Powered by Masco MIS & System Development</p>
+            </footer>
+        </div>
+    </div>
+
+</div>
+    @*<div class="loading">&nbsp;</div>*@
+    @*<div id="loading" style="display:none"><img src="../../Content/Images/waiting.gif" width="100" height="80" /><br><span style="text-align: center">Loading......</span></div>*@
+<div id="wait" style="display: none; width: 100%; height: 100%; border: 1px solid; border-radius: 6px; border-color: floralwhite; position: absolute; top: 0%; left: 0%; opacity: 0.8; text-align: center; Z-INDEX: 50; border-color: floralwhite; position: absolute;">
+    <img src="../../Content/Images/waiting3.gif" width="400" height="100" style="z-index: 10000; top: 40%; left: 42%; position: absolute;"/><br><span style="text-align: center">Loading......</span>
+</div>
+<script type="text/javascript">
+    
+    $(function () {
+        //$(document).ajaxStart(function () {
+        //    debugger;
+        //    $("#wait").css({ "display": "block" });
+        //});
+
+        //$(document).ajaxStop(function () {
+        //    debugger;
+        //    $("#wait").css({ "display": "none" });
+        //});
+
+        
+    });
+
+
+    $(window).resize(function () {
+        $('.panel.full-height').each(function () {
+            $(this).height($(window).height() - $(this).offset().top - 20);
+        });
+        $('#results').height($(window).height() - $('#results').offset().top - 106);
+    });
+    setTimeout(function () { $(window).resize(); }, 200);
+   
+    var jsonData = [];
+    var myPreviousUrl = '@ViewData.Model';
+    //$("#btnBackToPrevious").href(myPreviousUrl);
+    if (myPreviousUrl != '') {
+        jsonData = $.parseJSON(decodeURIComponent(myPreviousUrl));
+        var url = "../" + jsonData.Controller + "/" + jsonData.Action;
+        $("#btnBackToPrevious").attr('href', url);
+    }
+    $(function () {
+        $("#txtMascosearch").autocomplete({
+            source: aList,
+            select: function (event, ui) {
+                $(this).next("input").val(ui.item.value);
+                // Prevent value from being put in the input:
+                var dd = ui.item.value;
+
+                let searchText = ui.item.label;
+                let url = getUrl(searchText);
+                if (url != "") {
+                    window.location.replace(url);
+                    // return true;
+
+                }
+
+                event.preventDefault();
+            },
+        });
+    });
+    //$('#btnBackToPrevious').click(function () {
+    //    debugger;
+    //    parent.history.back();
+    //    return false;
+    //});
+    var aList = [];
+    $(document).ready(function () {
+        
+        MascoSearch();
+        $(document).ajaxStart(function () {
+            $("#wait").css({ "display": "block" });
+        });
+
+        $(document).ajaxStop(function () {
+            $("#wait").css({ "display": "none" });
+        });
+
+        //$(document).ajaxSend(function () {
+        //    //EasyLoading.show({
+        //    //    type: EasyLoading.TYPE.PACMAN,
+        //    //    text: 'loading....',
+        //    //    button: null,
+        //    //    timeout: 3000
+        //    //    //callback: function (event, data) {}
+        //    //});
+        //});
+   
+        //$(document).ajaxComplete(function () {
+        //   // EasyLoading.hide();
+        //});
+       
+    });
+    //$(document).ajaxSend(function () {
+    //    $("#wait").css("display", "block");
+    //});
+    //$(document).ajaxComplete(function () {
+    //    $("#wait").css("display", "none");
+    //});
+    function MascoSearch() {
+        $.ajax({
+            url: '@Url.Action("MascoSearch", "Home")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function(results) {
+                $.map(results.Data, function(item) {
+                    //                        debugger;
+                    if (results.Data.length > 0) {
+                        aList.push(item.value);
+                    }
+
+                });
+            },
+            error: function(data) {
+
+            }
+
+        });
+    }
+
+
+    $('#txtMascosearch').keypress(function (e) {
+        var searchText = $(this).val();
+        var key = e.which;
+        if (key == 13)  // the enter key code
+        {
+            let url = getUrl(searchText);
+            if (url != "") {
+                window.location.replace(url);
+                // return true;
+
+            }
+        }
+    });
+
+
+    function getUrl(searchText) {
+        let url = "";
+        if (searchText != "") {
+            switch (searchText) {
+            case "Employee's Communication Portal":
+                url = '@Url.Action("EmployeesComPortal", "MascoSearch")';
+                break;
+            case "Personal HRIS Date":
+                url = '@Url.Action("Index", "MascoSearch")';
+
+                break;
+            case "Leave Application":
+                url = '@Url.Action("LeaveApplication", "Leave")';
+                break;
+                case "Promoted Employee List":
+                    url = '@Url.Action("PromotedEmployee", "PromotedEmployee")';
+                    break;
+            default:
+                break;
+
+            }
+
+        }
+
+        return url;
+    }
+
+</script>
+
+@RenderSection("scripts", required: false)
+
+</body>
+</html>

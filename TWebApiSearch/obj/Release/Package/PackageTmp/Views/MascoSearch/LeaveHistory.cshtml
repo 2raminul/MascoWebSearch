@@ -1,0 +1,157 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "AdvanceHistory";
+}
+
+<link href="~/Content/Customcss/style.css" rel="stylesheet"/>
+<link href="~/Content/Customcss/tblStyle.css" rel="stylesheet" />
+<div class="panel panel-group">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">Leave History</div>
+        <div class="panel panel-body">
+            <div class="form-group row">
+                <label class="col-md-2"> Financial Year</label>
+                <div class="col-md-8">
+                    <select class="form-control" id="ddlFinalcialYear">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <table class="table table-bordered tblHeader tblbody" id="gvleaveDetails"  style='text-align:center'>
+                <thead>
+                    <tr>
+                        <th>Leave Type</th>
+                        <th>Total Balance</th>
+                        <th>Avail</th>
+                        <th>Rest Balance</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">Avail History</div>
+        <div class="panel panel-body">
+
+            <table class="table table-bordered tblHeader tblbody" id="gvLeaveHistory" style="text-align: center">
+                <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>Leave Type</th>
+                    <th>Avail Day</th>
+                    <th>From Date</th>
+                    <th>To Date</th>
+                    <th>Application Date</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@*<div class="row">
+    <div class="col-md-2">
+        <button class="btn btn-custom  pull-left " onclick="location.href='@Url.Action("Index", "MascoSearch")'">Back</button>
+    </div>
+   
+</div>*@
+<script>
+
+    $(document).ready(function () {
+        getFinalcialYear();
+    });
+        function getFinalcialYear() {
+            $.ajax({
+                url: '@Url.Action("GetFinalCialYear", "MascoSearch")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (results) {
+                    $('#ddlFinalcialYear').get(0).options.length = 0;
+                    $('#ddlFinalcialYear').get(0).options[0] = new Option('Select--------', '');
+
+                    $.map(results.Data, function (item) {
+                        $('#ddlFinalcialYear').get(0).options[$('#ddlFinalcialYear').get(0).options.length] = new Option(item.Text, item.ID);
+                    });
+
+                    $('#ddlFinalcialYear').val(results.SelectedVal);
+                    let finalcialYear = $('#ddlFinalcialYear').val();
+                    GetLeaveAvailHistory(finalcialYear);
+                    GetLeaveDetails(finalcialYear, "62104");
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+        function GetLeaveDetails(finalcialYear, employeCode) {
+            $.ajax({
+                url: '@Url.Action("GetLeaveDetails", "MascoSearch")',
+                type: "POST",
+                data: JSON.stringify({ "finalcialYear": finalcialYear, "employeCode": employeCode }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(results) {
+                    $("#gvleaveDetails tbody").empty();
+                    var ddd = JSON.parse(results)
+                    for (var i = 0; i < ddd.length; i++) {
+                        let tr = "<tr>";
+                        tr += "<td>" + ddd[i].LeaveType + "</td>";
+                        tr += "<td>" + ddd[i].TotalBalance + "</td>";
+                        tr += "<td>" + ddd[i].Avail + "</td>";
+                        tr += "<td>" + ddd[i].RestBalance + "</td>";
+                        tr += "</tr>";
+                        $("#gvleaveDetails tbody").append(tr);
+                    }
+                },
+                error: function(data) {
+
+                }
+            });
+        }
+
+
+        $("#ddlFinalcialYear").change(function() {
+            let finalcialYear = $(this).val();
+            if (finalcialYear == "") {
+                $("#gvleaveDetails tbody").empty();
+                $("#gvLeaveHistory tbody").empty();
+                return false;
+            } else {
+                GetLeaveDetails(finalcialYear, "62104");
+                GetLeaveAvailHistory(finalcialYear);
+            }
+
+        });
+        function GetLeaveAvailHistory(finalcialYear) {
+            $.ajax({
+                url: '@Url.Action("GetLeaveAvailHistory", "MascoSearch")',
+                type: "POST",
+                data: JSON.stringify({ "finalcialYear": finalcialYear }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(results) {
+                    $("#gvLeaveHistory tbody").empty();
+                    var ddd = JSON.parse(results);
+                    for (var i = 0; i < ddd.length; i++) {
+                        let tr = "<tr>";
+                        tr += "<td>" + (i + 1) + "</td>";
+                        tr += "<td>" + ddd[i].LeaveType + "</td>";
+                        tr += "<td>" + ddd[i].AvailDays + "</td>";
+                        tr += "<td>" + ddd[i].ApproveFromDate + "</td>";
+                        tr += "<td>" + ddd[i].ApproveToDate + "</td>";
+                        tr += "<td>" + ddd[i].ApplicationDate + "</td>";
+                        tr += "</tr>";
+                        $("#gvLeaveHistory tbody").append(tr);
+                    }
+                },
+                error: function(data) {
+
+                }
+            });
+        }
+    
+</script>

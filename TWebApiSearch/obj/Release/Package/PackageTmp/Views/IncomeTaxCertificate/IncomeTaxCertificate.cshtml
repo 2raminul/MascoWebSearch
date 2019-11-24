@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "IncomeTaxCertificate";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div class="panel panel-primary">
+    <div class="panel-heading">Income Tax Certificate</div>
+    <div class="panel panel-body">
+        <div class="form-group row">
+            <label class="col-md-2">Tax Year :</label>
+            <div class="col-md-4">
+                <select class="form-control select2" id="ddlTax"></select>
+            </div>
+           <label class="col-md-2">Tax Status :</label>
+            <div class="col-md-4">
+                <input type="radio" name="taxStatus" value="tax" checked> Tax
+                <input type="radio" name="taxStatus" value="nonTax"> Non-Tax
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.Partial("_layoutPageButton")
+        </div>
+    </div>
+
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+            var base = '@Url.Content("~/")';
+        $.getScript('../AppJs/Document%20Download%20Section/IncomeTaxCertificate.js',
+               function (data, textStatus, jqxhr) {
+                   console.log('Script File Load Status=' + jqxhr.status);
+               });
+    </script>
+}
+

@@ -1,0 +1,161 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "AdvanceHistory";
+}
+
+<link href="~/Content/Customcss/style.css" rel="stylesheet" />
+<link href="~/Content/Customcss/tblStyle.css" rel="stylesheet" />
+<div class="panel panel-primary">
+    <div class="panel panel-heading">Salary History</div>
+    <div class="panel panel-body">
+        <div class="form-group row">
+            <label class="col-md-2"> Financial Year</label>
+            <div class="col-md-8">
+                <select class="form-control" id="ddlFinalcialYear">
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+        <table class="table table-bordered tblHeader tblbody" id="gvSalaryHistory"  style='text-align:center'>
+            <thead>
+            <tr>
+                <th>SL</th>
+                <th>Month</th>
+                <th>Total Payable Amount</th>
+                <th>Total Paid Amount</th>
+                <th>Bank Part</th>
+                <th>Cash Part</th>
+                <th>Tax Deduction</th>
+                <th>Late Deduction</th>
+                <th>Absent Deduction</th>
+                <th>Advance Deduction</th>
+                <th>Arrea Salary</th>
+
+            </tr>
+            </thead>
+            <tbody style="text-align: right"></tbody>
+            <tfoot style="border: 2px dotted #cccccc;background-color: slategray;font-size: 17px; color: #ffffff;font-weight: bold;text-align: right;">
+                <tr>
+                    <td ></td>
+                    <td style="text-align: center"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+            </tr>
+          
+            </tfoot>
+        </table>
+    </div>
+  
+</div>
+
+<script>
+    $(document).ready(function () {
+        getFinalcialYear();
+    });
+        function getFinalcialYear() {
+            $.ajax({
+                url: '@Url.Action("GetFinalCialYear", "MascoSearch")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(results) {
+                    $('#ddlFinalcialYear').get(0).options.length = 0;
+                    $('#ddlFinalcialYear').get(0).options[0] = new Option('Select--------', '');
+
+                    $.map(results.Data, function(item) {
+                        $('#ddlFinalcialYear').get(0).options[$('#ddlFinalcialYear').get(0).options.length] = new Option(item.Text, item.ID);
+                    });
+
+                    $('#ddlFinalcialYear').val(results.SelectedVal);
+                    let finalcialYear = $('#ddlFinalcialYear').val();
+                    GetSalaryHistory(finalcialYear);
+
+                },
+                error: function(data) {
+
+                }
+            });
+        }
+
+        $('#ddlFinalcialYear').change(function () {
+
+            let finalcialYear = $(this).val();
+            if (finalcialYear == "") { $("#gvSalaryHistory tbody").empty(); return false; }
+            else {
+                GetSalaryHistory(finalcialYear);
+            }
+
+        });
+        function GetSalaryHistory(finalcialYear) {
+            $.ajax({
+                url: '@Url.Action("GetSalaryHistory", "MascoSearch")',
+                type: "POST",
+                data: JSON.stringify({ "finalcialYear": finalcialYear }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(results) {
+                    var TotalPayableAmount = 0;
+                    var PaidAmt = 0;
+                    var BankAmt = 0;
+                    var CashPart = 0;
+                    var Tax = 0;
+                    var LateDeduction = 0;
+                    var TotalDedForAbs = 0;
+                    var Advance = 0;
+                    var Arreas = 0;
+                    $("#gvSalaryHistory tbody").empty();
+                    var ddd = JSON.parse(results);
+                    for (var i = 0; i < ddd.length; i++) {
+                        let tr = "<tr>";
+                        tr += "<td>" + (i + 1) + "</td>";
+                        tr += "<td style='text-align:center'>" + ddd[i].MonthName + "</td>";
+                        tr += "<td>" + ddd[i].TotalPayableAmount + "</td>";
+                        tr += "<td>" + ddd[i].PaidAmt + "</td>";
+                        tr += "<td>" + ddd[i].BankAmt + "</td>";
+                        tr += "<td>" + ddd[i].CashPart + "</td>";
+                        tr += "<td>" + ddd[i].Tax + "</td>";
+                        tr += "<td>" + ddd[i].LateDeduction + "</td>";
+                        tr += "<td>" + ddd[i].TotalDedForAbs + "</td>";
+                        tr += "<td>" + ddd[i].Advance + "</td>";
+                        tr += "<td>" + ddd[i].Arreas + "</td>";
+                        tr += "</tr>";
+
+                        TotalPayableAmount += parseInt(ddd[i].TotalPayableAmount);
+                        PaidAmt += parseInt(ddd[i].PaidAmt);
+                        BankAmt += parseInt(ddd[i].BankAmt);
+                        CashPart += parseInt(ddd[i].CashPart);
+                        Tax += parseInt(ddd[i].Tax);
+                        LateDeduction += parseInt(ddd[i].LateDeduction);
+                        TotalDedForAbs += parseInt(ddd[i].TotalDedForAbs);
+                        Advance += parseInt(ddd[i].Advance);
+                        Arreas += parseInt(ddd[i].Arreas);
+
+                        $("#gvSalaryHistory tbody").append(tr);
+                    }
+                    var tRow = $("#gvSalaryHistory tfoot tr");
+                    $(tRow).find('td:eq(0)').text();
+                    $(tRow).find('td:eq(1)').text("Total");
+                    $(tRow).find('td:eq(2)').text(TotalPayableAmount);
+                    $(tRow).find('td:eq(3)').text(PaidAmt);
+                    $(tRow).find('td:eq(4)').text(BankAmt);
+                    $(tRow).find('td:eq(5)').text(CashPart);
+                    $(tRow).find('td:eq(6)').text(Tax);
+                    $(tRow).find('td:eq(7)').text(LateDeduction);
+                    $(tRow).find('td:eq(8)').text(TotalDedForAbs);
+                    $(tRow).find('td:eq(9)').text(Advance);
+                    $(tRow).find('td:eq(10)').text(Arreas);
+                },
+                error: function(data) {
+
+                }
+            });
+        }
+   
+</script>

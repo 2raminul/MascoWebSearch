@@ -1,0 +1,19 @@
+﻿/// <reference path="jquery-3.2.1.js" />
+/// <reference path="../AppJs/LogIn.js" />
+/// <reference path="../AppJs/SignUp.js" />
+/// <reference path="../content/jquery-ui-1.12.1/external/jquery/jquery.js" />
+/// <reference path="../content/jquery-ui-1.12.1/jquery-ui.js" />
+/// <reference path="../content/masco search - shinysearch_files/g=ac_js.js" />
+/// <reference path="../Content/Masco Search - ShinySearch_files/ga.js.download.js" />
+/// <reference path="../Content/Masco Search - ShinySearch_files/home2.js.download.js" />
+/// <reference path="../crystalreportviewers13/allInOne.js" />
+/// <reference path="../crystalreportviewers13/allStrings_cs.js" />
+/// <reference path="../crystalreportviewers13/allStrings_da.js" />
+/// <reference path="../crystalreportviewers13/allStrings_de.js" />
+/// <reference path="../crystalreportviewers13/allStrings_en.js" />
+/// <reference path="../crystalreportviewers13/allStrings_es.js" />
+/// <reference path="../crystalreportviewers13/allStrings_fi.js" />
+/// <reference path="../crystalreportviewers13/allStrings_fr.js" />
+/// <reference path="../crystalreportviewers13/allStrings_hu.js" />
+/// <reference path="../crystalreportviewers13/allStrings_it.js" />
+/// <reference path="../AppJs/LogIn.js" />

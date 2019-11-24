@@ -1,0 +1,94 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Leave Application";
+}
+<style>
+    input[type="button"]{
+        width:100%;
+    }
+</style>
+<div class="panel panel-primary">
+    <div class="panel-heading text-center"><h5>Document Download Section</h5></div>
+    <div class="panel-body">
+        <div class="container">
+            @*<div class="row" style="padding-top: 2%">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-3">ID</label>
+                        <div class="col-sm-9 ">
+                            <input type="text" class="form-control" id="txtID" readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-3">Name</label>
+                        <div class="col-sm-9 ">
+                            <input type="text" class="form-control" id="txtName" readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-3">Designation</label>
+                        <div class="col-sm-9 ">
+                            <input type="text" class="form-control" id="txtDesignation" readonly />
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <input type="button" class="btn btn-rounded" value="Leave Form" id="btnLeaveApp"/>
+                </div>
+                <div class="col-md-4">
+                    <input type="button" class="btn btn-info" value="Short Leave Form" id="btnHourlyLeave" />
+                </div>
+                <div class="col-md-4">
+                    <input type="button" class="btn btn-success" value="Outstation Duty Form" id="btnOutStationDuty" />
+                </div>
+            </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <input type="button" class="btn btn-info" value="Income Tax Certificate" id="btnIncomeTaxCertificate"/>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="button" class="btn btn-success" value="Salary Payslip" id="btnSalaryPayslip" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="button" class="btn btn-warning" value="Advance Payslip" id="btnAdvancePayslip" />
+                    </div>
+                    @*<div class="col-md-4">
+                        <button id="btnSpouseInfo" type="button" class="btn btn-primary" style="width: 100%;">Spouse Info</button>
+                    </div>*@
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <input type="button" class="btn btn-success" value="Bonus Payslip" id="btnBonusPayslip" />
+                    </div>
+                    @*<div class="col-md-4">
+                        <input type="button" class="btn btn-primary" value="Salary Payslip" id="btnSalaryPayslip" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="button" class="btn btn-primary" value="Advance Payslip" id="btnAdvancePayslip" />
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+   @section scripts
+{
+        <script type="text/javascript">
+            var base = '@Url.Content("~/")';
+            $.getScript('../AppJs/Document%20Download%20Section/LeaveApplication.js',
+               function (data, textStatus, jqxhr) {
+                   console.log('Script File Load Status=' + jqxhr.status);
+               });
+</script>
+}

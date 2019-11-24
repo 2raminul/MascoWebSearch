@@ -1,0 +1,238 @@
+﻿
+.user-box {
+    text-align: center;
+}
+.user-box .user-img {
+    position: relative;
+}
+.profile img {
+    border: 2px solid #f5f5f5;
+    height: 40px;
+    width: 40px;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: cadetblue !important;
+    color: white !important;
+}
+/* =============
+   Panel
+============= */
+
+.panel {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    border: 1px solid #e5e5e5;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+    .panel > .panel-heading {
+        font-size: 18px;
+        padding: 7px 15px;
+        border-top-right-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+        border-color: #e5e5e5 !important;
+    }
+
+    .panel > .panel-footer {
+        font-size: 18px;
+        padding: 7px 15px;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    .panel.panel-primary {
+        border-color: #dc6767;
+    }
+
+        .panel.panel-primary > .panel-heading {
+            color: #FFFFFF;
+            background: #dc6767;
+            border-color: #dc6767 !important;
+        }
+
+        .panel.panel-primary > .panel-footer {
+            color: #FFFFFF;
+            background: #dc6767;
+            border-color: #dc6767 !important;
+        }
+
+    .panel.panel-red {
+        border-color: #bf4346;
+    }
+
+        .panel.panel-red > .panel-heading {
+            color: #FFFFFF;
+            background: #bf4346;
+            border-color: #bf4346 !important;
+        }
+
+        .panel.panel-red > .panel-footer {
+            color: #FFFFFF;
+            background: #bf4346;
+            border-color: #bf4346 !important;
+        }
+
+    .panel.panel-orange {
+        border-color: #e9662c;
+    }
+
+        .panel.panel-orange > .panel-heading {
+            color: #FFFFFF;
+            background: #e9662c;
+            border-color: #e9662c !important;
+        }
+
+        .panel.panel-orange > .panel-footer {
+            color: #FFFFFF;
+            background: #e9662c;
+            border-color: #e9662c !important;
+        }
+
+    .panel.panel-green {
+        border-color: #488c6c;
+    }
+
+        .panel.panel-green > .panel-heading {
+            color: #FFFFFF;
+            background: #488c6c;
+            border-color: #488c6c !important;
+        }
+
+        .panel.panel-green > .panel-footer {
+            color: #FFFFFF;
+            background: #488c6c;
+            border-color: #488c6c !important;
+        }
+
+    .panel.panel-yellow {
+        border-color: #f2994b;
+    }
+
+        .panel.panel-yellow > .panel-heading {
+            color: #FFFFFF;
+            background: #f2994b;
+            border-color: #f2994b !important;
+        }
+
+        .panel.panel-yellow > .panel-footer {
+            color: #FFFFFF;
+            background: #f2994b;
+            border-color: #f2994b !important;
+        }
+
+    .panel.panel-blue {
+        background: #f2f5f6; /* Old browsers */
+        background: -moz-linear-gradient(top, #f2f5f6 0%, #c8d7dc 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(100%,#c8d7dc)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #f2f5f6 0%,#c8d7dc 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #f2f5f6 0%,#c8d7dc 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #f2f5f6 0%,#c8d7dc 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #f2f5f6 0%,#c8d7dc 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
+        border-color: #d8d8d8;
+    }
+
+        .panel.panel-blue > .panel-heading {
+            color: #FFFFFF;
+            background: #0a819c;
+            border-color: #0a819c !important;
+        }
+
+        .panel.panel-blue > .panel-footer {
+            color: #FFFFFF;
+            background: #0a819c;
+            border-color: #0a819c !important;
+        }
+
+    .panel.panel-pink {
+        border-color: #bf3773;
+    }
+
+        .panel.panel-pink > .panel-heading {
+            color: #FFFFFF;
+            background: #bf3773;
+            border-color: #bf3773 !important;
+        }
+
+        .panel.panel-pink > .panel-footer {
+            color: #FFFFFF;
+            background: #bf3773;
+            border-color: #bf3773 !important;
+        }
+
+    .panel.panel-violet {
+        border-color: #9351ad;
+    }
+
+        .panel.panel-violet > .panel-heading {
+            color: #FFFFFF;
+            background: #9351ad;
+            border-color: #9351ad !important;
+        }
+
+        .panel.panel-violet > .panel-footer {
+            color: #FFFFFF;
+            background: #9351ad;
+            border-color: #9351ad !important;
+        }
+
+    .panel.panel-grey {
+        border-color: #4b5d67;
+    }
+
+        .panel.panel-grey > .panel-heading {
+            color: #FFFFFF;
+            background: #4b5d67;
+            border-color: #4b5d67 !important;
+        }
+
+        .panel.panel-grey > .panel-footer {
+            color: #FFFFFF;
+            background: #4b5d67;
+            border-color: #4b5d67 !important;
+        }
+
+    .panel.panel-dark {
+        border-color: #594857;
+    }
+
+        .panel.panel-dark > .panel-heading {
+            color: #FFFFFF;
+            background: #594857;
+            border-color: #594857 !important;
+        }
+
+        .panel.panel-dark > .panel-footer {
+            color: #FFFFFF;
+            background: #594857;
+            border-color: #594857 !important;
+        }
+
+    .panel.panel-white {
+        border-color: #efefef;
+    }
+
+        .panel.panel-white > .panel-heading {
+            border-bottom: 1px solid #faf9fb;
+            color: #999999;
+            background: #FFFFFF;
+        }
+
+        .panel.panel-white > .panel-footer {
+            border-top: 1px solid #faf9fb;
+            color: #999999;
+            background: #FFFFFF;
+        }
+
+    .row {
+     margin-right: -11px;
+     margin-left: -11px;
+ }
+.w3-animate-right {
+        
+    padding: 0.8% 0% 0 0.8%;
+}

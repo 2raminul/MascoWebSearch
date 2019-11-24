@@ -1,0 +1,205 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="~/Content/Images/Masco.jpg">
+    <title>Log In::Masco Web Search</title>
+    <link href="~/Content/css/logIn.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <style>
+        .img {
+            width: 20%;
+            box-shadow: 0 4px 8px 0 rgba(240, 240, 240, 0.2), 0 6px 20px 0 rgba(240, 240, 240, 0.19);
+        }
+        .sweet-alert {
+            z-index: 9999;
+        }
+        @@media only screen and (min-width:480px ) and  (max-width: 1366px){
+            #login-container {
+                top: 13%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form id="form1">
+            <div>
+                <div class="container">
+                    <div id="login-container">
+                        <div id="login-box">
+                            <div class="logo">
+                                <img src="../../Content/Images/MascoLogo.png" class="img center-block" id="userImg" />
+                                @*<img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img img-responsive img-circle center-block" />*@
+                                <h1 class="logo-caption">
+                                    <span class="tweak">Searching</span>Board
+                                </h1>
+                            </div>
+                            <!-- /.logo -->
+                            <div class="controls">
+                                <div class="form-group input-field">
+                                    @*<div class="col-sm-7">*@
+                                    <i class="fa fa-user prefix"></i>
+                                    <input type="text" name="username" id="txtUsername" placeholder="Username" class="form-control" onblur="getEmpImage()" />
+                                </div>
+                                <div class="form-group input-field">
+                                    <i class="fa fa-lock prefix"></i>
+                                    <input type="password" name="username" id="txtPass" placeholder="Password" class="form-control" />
+                                    @*</div>*@
+                                </div>
+                                @*<input type="text" name="username" id="txtUsername" placeholder="Username" class="form-control"/>
+                            <input type="password" name="username" id="txtPass" placeholder="Password" class="form-control"/>*@
+                                <div class="form-group ">
+                                    <div class="col-xs-12">
+                                        <div class="checkbox checkbox-custom" style="padding-left: 7px">
+                                            <input id="checkbox-signup" type="checkbox">
+                                            <label for="checkbox-signup">
+                                                Remember me
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-xs-6">
+                                        <div class="checkbox checkbox-custom" style="padding-left: 7px">
+                                            <a style="color: #525252;cursor: pointer;text-decoration: none;position: relative;margin-bottom: 12px;float: left;" id="btnForgotPass"><i class="fa fa-gg"></i> Forgot password?</a>
+                                            <span style="color: grey; font-weight: normal; font-size: 13px; margin-top: 20px">
+                                                For a new request please 
+                                                <a style="cursor: pointer; color: #ff5252; text-decoration: none" id="btnSignUp" href='@Url.Action("SignUp", "LogIn")'>click here</a>
+                                               
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-xs-6">
+                                        <div class="checkbox checkbox-custom" style="padding-left: 7px">
+                                            <input type="button" id="btnLogin" class="btn btn-default btn-block btn-custom" name="btnLogin" value="Login" style="margin-top: 25px;"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<input type="checkbox" id="chkRememberMe"/>*@@*<label style="color: grey;font-weight: normal">Remember me on this computer</label>*@
+                                
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                    </div>
+                    <!-- /#login-box -->
+                </div>
+                <!-- /.container -->
+                <div id="particles-js"></div>
+            </div>
+        </form>
+        <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+        <script src="~/Scripts/sweetalert.min.js"></script>
+        <script src="~/AppJs/LogIn.js"></script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#btnLogin").click(function() {
+                    debugger;
+                    var user = { UserName: $("#txtUsername").val(), Password: $("#txtPass").val() };
+                    $.ajax({
+                        url: '@Url.Action("GetLoginAccess", "LogIn")',
+                        data: JSON.stringify({ "userName": user.UserName, "password": user.Password }),
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            debugger;
+                            if (data=="true") {
+                                window.location.href = '/Home/Index';
+                            } else {
+                                swal("","Invalid Credentials");
+                            }
+                        },
+                        error: function(a, b, c) {
+                            //ShowCustomDialog(formatErrorMessage(a, c), "Employee ID Load Problem");
+                        }
+
+                    });
+                });
+
+                $('#btnForgotPass').on('click', function() {
+                    var empCode = $('#txtUsername').val();
+                    $.ajax({
+                        url: '@Url.Action("SendPassword", "LogIn")',
+                        data: JSON.stringify({ "empCode":empCode }),
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            swal(data);
+                        },
+                        error: function (a, b, c) {
+                            //ShowCustomDialog(formatErrorMessage(a, c), "Employee ID Load Problem");
+                        }
+
+                    });
+                });
+                
+            });
+
+            $('#txtPass').keypress(function (e) {
+                var key = e.which;
+                if (key == 13)  // the enter key code
+                {
+                    $('input[name = btnLogin]').click();
+                    return false;
+                }
+            });
+            $('#txtUsername').keypress(function (e) {
+                var key = e.which;
+                if (key == 13)  // the enter key code
+                {
+                    $('input[name = btnLogin]').click();
+                    return false;
+                }
+            });
+
+            function login(parameters) {
+                var empCode = $('#txtUsername').val();
+                $.ajax({
+                    url: '@Url.Action("SendPassword", "LogIn")',
+                    data: JSON.stringify({ "empCode": empCode }),
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        swal(data);
+                    },
+                    error: function (a, b, c) {
+                        //ShowCustomDialog(formatErrorMessage(a, c), "Employee ID Load Problem");
+                    }
+
+                });
+            }
+            function getEmpImage() {
+                var empCode = $('#txtUsername').val();
+                $.ajax({
+                    url: '@Url.Action("GetUserImageById", "LogIn")',
+                    data: JSON.stringify({ "empCode": empCode }),
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $("#userImg").attr("src", data);
+                    },
+                    error: function (a, b, c) {
+                        //ShowCustomDialog(formatErrorMessage(a, c), "Employee ID Load Problem");
+                    }
+
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,252 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Masco Search Engine";
+}
+<link href="~/Content/Customcss/style.css" rel="stylesheet" />
+<style>
+    .row {
+        margin-right: -11px;
+        margin-left: -11px;
+    }
+
+    .w3-animate-right {
+        padding: 0.8% 0% 0 0.8%;
+    }
+   
+</style>
+
+<div class="panel panel-primary">
+    <div class="panel panel-heading">Masco Search Engine</div>
+    <div class="panel panel-body full-height">
+        <div class="row">
+            <div class="col-md-12">
+                <form role="form" class="form-horizontal">
+                    @*<div class="row">
+                        <div class="col-md-offset-2 col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Search Head</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="ddlSearch">
+                                        <option value="">Select---</option>
+                                        <option value="Personal HRIS Date">Personal HRIS Date</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>*@
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="col-sm-3">ID</label>
+                                <div class="col-sm-9 ">
+                                    <input type="text" class="form-control" id="txtID" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Section</label>
+                                <div class="col-sm-9 ">
+                                    <input type="text" class="form-control" id="txtSection" readonly/>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Name</label>
+                                <div class="col-sm-9 ">
+                                    <input type="text" class="form-control" id="txtName" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">DOJ</label>
+                                <div class="col-sm-9 ">
+                                    <input type="text" class="form-control" id="txtDoj" readonly/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Designation</label>
+                                <div class="col-sm-9 ">
+                                    <input type="text" class="form-control" id="txtDesignation" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Total Service Length</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="txtServiceLength" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Working Unit</label>
+                                <div class="col-sm-9 ">
+                                    <input type="text" class="form-control" id="txtWorkingUnit" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Salary Cost Centre</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="txtSalaryCostCentre" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                @*<label class="col-sm-3">Salary Cost Centre</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="txtSalaryCostCentre" readonly />
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group" style="padding: 1px; background-color: lightsalmon">
+                        <h4 class="text-center" style="font-weight: bold; padding-top: 9px;"> Please click on your desired field</h4>
+                    </div>
+                    <div class="form-group row" style="padding: 0 1%;">
+                        <div class="col-md-4">
+                            <button class="btn btn-custom" type="button" style="width: 100%;" id="btnAttendance">Attendance History</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-custom" type="button" style="width: 100%;" id="btnLeaveHistory">Leave History</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-custom" type="button" style="width: 100%;" id="btnSalaryHistory">Salary History</button>
+                        </div>
+                    </div>
+                    <div class="form-group row" style="padding: 0 1%;">
+                        <div class="col-md-4">
+                            <button class="btn btn-custom" type="button" style="width: 100%;" id="btnBonusHistory">Bonus History</button>
+                        </div>
+                      
+                        <div class="col-md-4">
+                            <button class="btn btn-custom" type="button" style="width: 100%;" id="btnAdvanceHistory">Advance History</button>
+                        </div>
+
+                        <div class="col-md-4">
+                            <button class="btn btn-custom" type="button" style="width: 100%;" id="btnHolidayHistory">Holiday History</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="padding: 0 1%;">
+                        <div class="col-md-4">
+                            <button class="btn btn-custom" type="button" style="width: 100%;" id="btnHourlyLeaveForm">Hourly Leave Details</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-custom" type="button" style="width: 100%;" id="btnOutStationDuty">Out Station Duty Details</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-custom" type="button" style="width: 100%;" id="btnAnnualLeaveDetails">Annual Leave Details</button>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+            
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+    //$("#txtDoj").datepicker({})
+
+    $(document).ready(function () {
+
+        @*var jsonData = [];
+        var myPreviousUrl = '@ViewData.Model';
+        debugger;
+        //$("#btnBackToPrevious").href(myPreviousUrl);
+        if (myPreviousUrl != '') {
+            jsonData = $.parseJSON(decodeURIComponent(myPreviousUrl));
+            debugger;
+            var url = "../" + jsonData.Controller + "/" + jsonData.Action;
+            $("#btnBackToPrevious").attr('href'url);
+        }*@
+        getEmployeeInfo();
+    });
+        function getEmployeeInfo() {
+            $.ajax({
+                url: '@Url.Action("GetEmployeeInfo", "MascoSearch")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (results) {
+                    debugger;
+                    $("#txtID").val(results.EMP_CODE);
+                    $("#txtName").val(results.EMP_ENAME);
+                    $("#txtDesignation").val(results.DesigEName);
+                    $("#txtSection").val(results.SectEName);
+                    $("#txtDoj").val(results.DOJ);
+                    $("#txtServiceLength").val(results.TotalServiceLength);
+                    $("#txtWorkingUnit").val(results.WorkingUnit);
+                    $("#txtSalaryCostCentre").val(results.CostingUnit);
+
+                },
+                error: function(data) {
+                    swal("", "Innternal Server Error");
+                }
+            });
+        }
+    
+
+    $("#btnLeaveHistory").on("click", function() {
+        window.location.href = '@Url.Action("LeaveHistory", "MascoSearch")';
+    });
+
+
+    $("#btnAttendance").on("click", function() {
+        window.location.href = '@Url.Action("AttendanceHistory", "MascoSearch")';
+    });
+
+    $("#btnBonusHistory").on("click", function() {
+        window.location.href = '@Url.Action("BonusHistory", "MascoSearch")';
+    });
+    $("#btnSalaryHistory").on("click", function() {
+        window.location.href = '@Url.Action("SalaryHistory", "MascoSearch")';
+    });
+    $("#btnAdvanceHistory").on("click", function() {
+        window.location.href = '@Url.Action("AdvanceHistory", "MascoSearch")';
+    });
+    $("#btnHolidayHistory").on("click", function() {
+        window.location.href = '@Url.Action("HolidayHistory", "MascoSearch")';
+    });
+    $("#btnLeaveForm").on("click", function() {
+        @*window.open = '@Url.Action("LeaveReport", "Leave")'*@
+         var url = '@Url.Action("LeaveReport", "Leave")';
+         window.open(url, "_blank");
+
+        //window.location.href = '@Url.Action("HourlyLeaveDetails", "MascoSearch")';
+    });
+    $("#btnHourlyLeaveForm").on("click", function() {
+       window.location.href = '@Url.Action("HourlyLeaveDetails", "MascoSearch")';
+
+    });
+    $("#btnOutStationDuty").on("click", function() {
+       // var url = '@Url.Action("OutStationDuty", "Leave")';
+       // window.open(url, "_blank");
+        window.location.href = '@Url.Action("OutStationDutyDetails", "MascoSearch")';
+        //OutStationDutyDetails
+    });
+    $("#btnAnnualLeaveDetails").on("click", function () {
+        window.location.href = '@Url.Action("AnnualLeaveDetails", "MascoSearch")';
+
+    });
+    
+
+</script>

@@ -1,0 +1,368 @@
+﻿@model TWebApiSearch.Models.User
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Customcss/backgroundAnimation.css" rel="stylesheet" />
+
+<style>
+    input[type="submit"] {
+        height: 36px;
+        line-height: 27px;
+        background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#f1f1f1));
+        background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+        background-color: #f2f2f2;
+        border: 1px solid #f2f2f2;
+        border-radius: 4px;
+        color: #757575;
+        cursor: default;
+        font-family: arial,sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+        margin: 11px 4px;
+        min-width: 54px;
+        padding: 0 16px;
+        text-align: center;
+    }
+
+        input[type="submit"]:focus {
+            border: 1px solid #4d90fe;
+            outline: none;
+        }
+
+        input[type="submit"]:hover {
+            /*background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#f1f1f1));
+    background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);*/
+            /*-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);*/
+            background-color: #f8f8f8;
+            background-image: linear-gradient(top,#f8f8f8,#f1f1f1);
+            background-image: -o-linear-gradient(top,#f8f8f8,#f1f1f1);
+            border: 1px solid #c6c6c6;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            color: #222;
+        }
+
+    #searchPage2 {
+        position: absolute;
+        top: 15%;
+        left: 30%;
+        width: 584px;
+        height: 100px;
+    }
+
+    ​ .card {
+        height: 120px;
+    }
+
+    .card-img-top {
+        height: 60px;
+    }
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 83%;
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+        top: 10%;
+    }
+
+    /* Add Animation */
+
+
+    /* The Close Button */
+    .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal-header {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white;
+    }
+
+    .modal-body {
+        padding: 2px 16px;
+        /*min-height: 80% !important;*/
+        overflow: scroll;
+        height: 450px;
+    }
+
+    .modal-footer {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white;
+    }
+    
+    h5 {
+        text-align: center;
+        color: midnightblue;
+        font-weight: bold;
+    }
+    .card-text:last-child {
+        font-weight: bold;
+    }
+
+    .ui-autocomplete {
+        opacity: 0;
+        display: none;
+        transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+        -o-transition: opacity 1s;
+    }
+
+    .ui-autocomplete.opened {
+        opacity: 1;
+        transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+        -o-transition: opacity 1s;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #333;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    }
+    .ui-menu .ui-menu-item-wrapper {
+        font-weight: bold;
+    }
+    /*ul>.ui-menu-item:nth-child(even) {
+        background: rgb(159, 115, 230);
+    }
+    ul>.ui-menu-item:nth-child(odd) {
+        background: rgb(155, 178, 91);
+    }*/
+    ul>.ui-menu-item:nth-child(4n+0) {
+        color: rgb(97, 196, 21);
+        font-size: 17px;
+    }
+    ul>.ui-menu-item:nth-child(4n+1) {
+        color: rgb(28, 157, 48);/*rgb(212, 220, 166);*/
+        font-size: 17px;
+    }
+    ul>.ui-menu-item:nth-child(4n+2) {
+        color: rgb(159, 115, 230);
+        font-size: 17px;
+    }
+    ul>.ui-menu-item:nth-child(4n+3) {
+        color: rgb(155, 178, 91);
+        font-size: 17px;
+    }
+</style>
+
+
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+@*<div class="content">
+        <h1></h1>
+    </div>*@
+
+
+<div class="row" style="vertical-align: middle;text-align: center;margin-top:5%;">
+    <div class="col-md-12 text-center">
+        <div id="searchPage2" class="align-middle">
+            <img src="~/Content/Images/MascoText1.png" style="width: 35%;" /><br />
+            <img src="~/Content/Images/SearchEnginText2.png" style="margin-left: 141px;margin-top: -28px;" />
+            <br>
+            <br>
+            <input type="text" class="form-control" autocomplete="off" id="txtMascosearch" autofocus="autofocus" style="border-radius: 2.25rem;background-color:rgba(255,255,255,.8);">
+            <br>
+            <center>
+                <input value="I am Hungry to Search" id="btnSearch" type="submit" style="cursor: pointer">
+                <input value="I want to learn (Click Here)" id="btnLearn" type="submit" style="cursor: pointer">
+            </center>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" style="width: 100%;text-align: center;bottom: 43px;position: fixed;">
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-img-top" src="~/Content/Images/NumberofView1.png" alt="Card image cap">
+            <div class="card-body" style="margin-top:-24px;">
+                <p class="card-text" id="pNumofVw">100</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-img-top" src="~/Content/Images/NumberofListedUser1.png" alt="Card image cap">
+            <div class="card-body" style="margin-top:-24px;">
+                <p class="card-text" id="pNumoflstUser">100</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-img-top" src="~/Content/Images/CurrentlyViewing1.png" alt="Card image cap">
+            <div class="card-body" style="margin-top:-24px;">
+                <p class="card-text" id="pCrntVw">100</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-img-top" src="~/Content/Images/TodaysView1.png" alt="Card image cap">
+            <div class="card-body" style="margin-top:-24px;">
+                <p class="card-text" id="pTodaysVw">100</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The Modal Add New Customer-->
+<div id="myModal" class="modal" data-backdrop="false">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 style="width: 221px;margin: 6px auto;font-family: cursive;">Search Criteria</h3>
+        </div>
+        <div class="modal-body">
+            
+        </div>
+        <div class="modal-footer">
+            <input value="Close" id="btnModalClose" type="button" style="cursor: pointer" class="btn btn-default">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(function () {
+        $("#txtMascosearch").autocomplete({
+            source: aList,
+            open: function (i,obj) {
+                $('ul.ui-autocomplete').addClass('opened ');
+            },
+            close: function() {
+                $('ul.ui-autocomplete').removeClass('opened');
+            }
+            
+        });
+    });
+
+    var aList = [];
+    $(document).ready(function () {
+        MascoSearch();
+        getLoginViewList();
+    });
+    function getLoginViewList() {
+        $.ajax({
+            url: '@Url.Action("GetLoginViewList", "Home")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#pNumofVw').text(results.NumberofView);
+                $('#pNumoflstUser').text(results.NumberofListedUser);
+                $('#pCrntVw').text(results.CurrentlyViewing);
+                $('#pTodaysVw').text(results.TodaysView);
+
+            },
+            error: function (data) {
+            }
+        });
+    }
+
+    function MascoSearch() {
+        $.ajax({
+            url: '@Url.Action("MascoSearch", "Home")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $.map(results.Data, function (item) {
+                    if (results.Data.length > 0) {
+                        aList.push(item.value);
+                    }
+
+                });
+            },
+            error: function (data) {
+            }
+        });
+    }
+    function getUrl(searchText) {
+        let url = "";
+        if (searchText != "") {
+            switch (searchText) {
+                case "Employee's Communication Portal":
+                    url = '@Url.Action("EmployeesComPortal", "MascoSearch")';
+                    break;
+                case "Personal Human Resource Information Systems Data":
+                    url = '@Url.Action("Index", "MascoSearch")';
+
+                    break;
+                case "Documents Download Section":
+                    url = '@Url.Action("LeaveApplication", "Leave")';
+                    break;
+                case "Promoted Employee List":
+                    url = '@Url.Action("PromotedEmployee", "PromotedEmployee")';
+                    break;
+                default:
+                    break;
+            }
+        }
+        return url;
+    }
+    $('#btnSearch').click(function () {
+        var searchText = $('#txtMascosearch').val();
+        let url = getUrl(searchText);
+        if (url != "") {
+            window.location.replace(url);
+        }
+
+    });
+    $('#btnLearn').click(function () {
+        $('.modal-body').empty();
+        getLearnInformation();
+        $("#myModal").css("display", "block");
+
+    });
+    $('#btnModalClose').click(function () {
+        $("#myModal").css("display", "none");
+    });
+    function getLearnInformation() {
+        $.ajax({
+            url: '@Url.Action("GetLearnInformation", "Home")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                debugger;
+                var content = '';
+                for (var i = 0; i < results.length; i++) {
+                    if (i % 3 == 0 && i > 0) {
+                        content += '</div>';
+                    }
+                    if (i % 3 == 0) {
+                        content += '<div class="row" style="margin-top:15px;">';
+                    }
+                    content += '<div class="col-md-4">' +
+                        '<div class="card" style="box-shadow: 9px 9px 15px 1px #ccc;">' +
+                        '<div class="card-body">' +
+                        '<h5 style="height: 50px;overflow-y: auto;">' + results[i].SearchText + '</h5><hr>' +
+                        '<p class="card-text" style="height: 80px;font-size: 14px;overflow-y: auto;color: cadetblue;font-weight: bold;text-align: center;">' + results[i].SearchDetails + '</p>' +
+                        '</div></div></div>';
+                }
+                $('.modal-body').append(content);
+            },
+            error: function (data) {
+            }
+        });
+    }
+    //$('#exampleModal').modal('show');
+</script>

@@ -1,0 +1,85 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="Table" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Table">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EMP_ID" type="xs:long" minOccurs="0" />
+              <xs:element name="EMP_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="CardId" type="xs:string" minOccurs="0" />
+              <xs:element name="EMP_ENAME" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpBName" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpFName" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpMName" type="xs:string" minOccurs="0" />
+              <xs:element name="Gender" type="xs:string" minOccurs="0" />
+              <xs:element name="MarSts" type="xs:string" minOccurs="0" />
+              <xs:element name="DOJ" type="xs:string" minOccurs="0" />
+              <xs:element name="DOB" type="xs:string" minOccurs="0" />
+              <xs:element name="DOM" type="xs:string" minOccurs="0" />
+              <xs:element name="Nationality" type="xs:string" minOccurs="0" />
+              <xs:element name="VoterId" type="xs:string" minOccurs="0" />
+              <xs:element name="PassportNo" type="xs:string" minOccurs="0" />
+              <xs:element name="Mobile" type="xs:string" minOccurs="0" />
+              <xs:element name="Email" type="xs:string" minOccurs="0" />
+              <xs:element name="EmergConName" type="xs:string" minOccurs="0" />
+              <xs:element name="EmergConMobile" type="xs:string" minOccurs="0" />
+              <xs:element name="EmergConAddress" type="xs:string" minOccurs="0" />
+              <xs:element name="PreCareOf" type="xs:string" minOccurs="0" />
+              <xs:element name="Hobby" type="xs:string" minOccurs="0" />
+              <xs:element name="ExtraCurr" type="xs:string" minOccurs="0" />
+              <xs:element name="SpouseName" type="xs:string" minOccurs="0" />
+              <xs:element name="SpouseOccu" type="xs:string" minOccurs="0" />
+              <xs:element name="SpouseDOB" type="xs:string" minOccurs="0" />
+              <xs:element name="SpouseQualif" type="xs:string" minOccurs="0" />
+              <xs:element name="SpouseBloodGrp" type="xs:string" minOccurs="0" />
+              <xs:element name="SpouseMobile" type="xs:string" minOccurs="0" />
+              <xs:element name="IsHvEdu" type="xs:string" minOccurs="0" />
+              <xs:element name="SectEName" type="xs:string" minOccurs="0" />
+              <xs:element name="SectBName" type="xs:string" minOccurs="0" />
+              <xs:element name="SubSectEName" type="xs:string" minOccurs="0" />
+              <xs:element name="SubSectBName" type="xs:string" minOccurs="0" />
+              <xs:element name="DeptEName" type="xs:string" minOccurs="0" />
+              <xs:element name="DeptBName" type="xs:string" minOccurs="0" />
+              <xs:element name="UnitNo" type="xs:int" minOccurs="0" />
+              <xs:element name="UnitEName" type="xs:string" minOccurs="0" />
+              <xs:element name="UnitBName" type="xs:string" minOccurs="0" />
+              <xs:element name="UnitEAddress" type="xs:string" minOccurs="0" />
+              <xs:element name="UnitBAddress" type="xs:string" minOccurs="0" />
+              <xs:element name="GroupEName" type="xs:string" minOccurs="0" />
+              <xs:element name="GroupBName" type="xs:string" minOccurs="0" />
+              <xs:element name="DesigEName" type="xs:string" minOccurs="0" />
+              <xs:element name="DesigBName" type="xs:string" minOccurs="0" />
+              <xs:element name="CompanyName" type="xs:string" minOccurs="0" />
+              <xs:element name="PerPostCodeNo" type="xs:int" minOccurs="0" />
+              <xs:element name="PrePostCodeNo" type="xs:int" minOccurs="0" />
+              <xs:element name="PrePostCode" type="xs:string" minOccurs="0" />
+              <xs:element name="PerPostCode" type="xs:string" minOccurs="0" />
+              <xs:element name="BirthRegNo" type="xs:string" minOccurs="0" />
+              <xs:element name="ContactMobile" type="xs:string" minOccurs="0" />
+              <xs:element name="PersonalMobile" type="xs:string" minOccurs="0" />
+              <xs:element name="PerCareOf" type="xs:string" minOccurs="0" />
+              <xs:element name="PerDisName" type="xs:string" minOccurs="0" />
+              <xs:element name="PerDivName" type="xs:string" minOccurs="0" />
+              <xs:element name="PerPost" type="xs:string" minOccurs="0" />
+              <xs:element name="PerPostCode1" type="xs:string" minOccurs="0" />
+              <xs:element name="PerThanaName" type="xs:string" minOccurs="0" />
+              <xs:element name="PerUpazilaName" type="xs:string" minOccurs="0" />
+              <xs:element name="PerVill" type="xs:string" minOccurs="0" />
+              <xs:element name="PreUpazilaNo" type="xs:int" minOccurs="0" />
+              <xs:element name="PerUpazilaNo" type="xs:int" minOccurs="0" />
+              <xs:element name="PreUpazilaName" type="xs:string" minOccurs="0" />
+              <xs:element name="PerUpazilaName1" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpChildNo" type="xs:int" minOccurs="0" />
+              <xs:element name="ChildType" type="xs:string" minOccurs="0" />
+              <xs:element name="ChildName" type="xs:string" minOccurs="0" />
+              <xs:element name="ChildDOB" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ChildOccup" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

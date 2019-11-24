@@ -1,0 +1,96 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "AdvanceHistory";
+}
+
+<link href="~/Content/Customcss/style.css" rel="stylesheet" />
+<link href="~/Content/Customcss/tblStyle.css" rel="stylesheet" />
+<div class="panel panel-primary">
+    <div class="panel panel-heading">Bonus History</div>
+    <div class="panel panel-body">
+        <div class="form-group row">
+            <label class="col-md-2"> Financial Year</label>
+            <div class="col-md-8">
+                <select class="form-control" id="ddlFinalcialYear">
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+
+        <table class="table table-bordered tblHeader tblbody" id="gvBonusHistory" style="text-align: center">
+            <thead>
+            <tr>
+                <th>Bonus Type</th>
+                <th>Bonus Amount</th>
+                <th>Month</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        getFinalcialYear();
+    });
+        function getFinalcialYear() {
+            $.ajax({
+                url: '@Url.Action("GetFinalCialYear", "MascoSearch")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(results) {
+                    $('#ddlFinalcialYear').get(0).options.length = 0;
+                    $('#ddlFinalcialYear').get(0).options[0] = new Option('Select--------', '');
+
+                    $.map(results.Data, function(item) {
+                        $('#ddlFinalcialYear').get(0).options[$('#ddlFinalcialYear').get(0).options.length] = new Option(item.Text, item.ID);
+                    });
+
+                    $('#ddlFinalcialYear').val(results.SelectedVal);
+                    let finalcialYear = $('#ddlFinalcialYear').val();
+                    GetBonusHistory(finalcialYear);
+
+                },
+                error: function(data) {
+
+                }
+            });
+        }
+
+        $('#ddlFinalcialYear').change(function () {
+
+            let finalcialYear = $(this).val();
+            if (finalcialYear == "") { $("#gvBonusHistory tbody").empty(); return false; }
+            else {
+                GetBonusHistory(finalcialYear);
+            }
+        });
+
+        function GetBonusHistory(finalcialYear) {
+            $.ajax({
+                url: '@Url.Action("GetBonusHistory", "MascoSearch")',
+                type: "POST",
+                data: JSON.stringify({ "finalcialYear": finalcialYear }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(results) {
+                    $("#gvBonusHistory tbody").empty();
+                    var ddd = JSON.parse(results)
+                    for (var i = 0; i < ddd.length; i++) {
+                        let tr = "<tr>";
+                        tr += "<td>" + ddd[i].BonusTypeName + "</td>";
+                        tr += "<td>" + ddd[i].BonusAmount + "</td>";
+                        tr += "<td>" + ddd[i].BonusMonthName + "</td>";
+                        tr += "</tr>";
+                        $("#gvBonusHistory tbody").append(tr);
+                    }
+                },
+                error: function(data) {
+
+                }
+            });
+        }
+  
+</script>

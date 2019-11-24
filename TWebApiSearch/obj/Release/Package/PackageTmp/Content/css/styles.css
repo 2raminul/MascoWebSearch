@@ -1,0 +1,166 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+body, html {
+  
+	/*background-repeat: no-repeat; /*background-image: linear-gradient(rgb(12, 97, 33),rgb(104, 145, 162));*/*/
+	/*background:black !important;*/
+	position: relative;
+	
+}
+
+
+#btnRequest {
+	border-radius: 2px;
+	background: #ff5252;
+	color: white;
+	
+	padding: 10px 0px;
+}
+
+	#btnRequest:hover {
+		-webkit-transition: all 500ms ease;
+		-moz-transition: all 500ms ease;
+		-ms-transition: all 500ms ease;
+		-o-transition: all 500ms ease;
+		transition: all 500ms ease;
+		background: rgba(48, 46, 45, 1);
+		border-color: #ff5252;
+	}
+
+ #divSignUp {
+	 background: url(../Images/sewing-collection.png);
+	 background-repeat: no-repeat;
+	 background-size: cover;
+	 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	 margin-top: 20%;
+	 position: absolute;
+	 top: 16%;
+	 left: 50%;
+	 transform: translateX(-50%);
+	 width: 480px;
+	 margin: 0 auto;
+
+ }
+ #div-signup-box {
+	 background-color: rgba(255, 255, 255, 0.9);
+	 padding: 4%;
+ }
+  #divSignUp h4 {
+	  font-family: 'Poiret One', cursive;
+	  font-weight: bold;
+  }
+/* #divSignUp input[type=text] {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #9e9e9e;
+	border-radius: 0;
+	outline: none;
+	height: 3rem;
+	width: 100%;
+	font-size: 1.2rem;
+	margin: 0 0 15px 0;
+	padding: 0;
+	box-shadow: none;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	transition: all .3s;
+ }
+ #divSignUp input[type=text]:focus:not([readonly]) {
+	 border-bottom: 1px solid #26a69a;
+	 box-shadow: 0 1px 0 0 #26a69a;
+ }*/
+.input-field {
+	position: relative;
+	/*margin-top: 1rem;*/
+}
+.input-field .prefix {
+	position: absolute;
+	width: 3rem;
+	font-size: 2rem;
+	-webkit-transition: color .2s;
+	-moz-transition: color .2s;
+	-o-transition: color .2s;
+	-ms-transition: color .2s;
+	transition: color .2s;
+	padding-top: 6px;
+}
+/*.input-field .prefix ~ input {
+   
+}*/
+.input-field .prefix ~ input {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #9e9e9e;
+	border-radius: 0;
+	outline: none;
+	height: 3.5rem;
+	width: 100%;
+	font-size: 1.5rem;
+	margin: 0 0 15px 0;
+	padding: 0;
+	box-shadow: none;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	transition: all .3s;
+	 margin-left: 3rem;
+	width: 92%;
+	width: calc(100% - 3rem);
+}
+.input-field .prefix ~ select {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #9e9e9e;
+	border-radius: 0;
+	outline: none;
+	height: 3.5rem;
+	width: 100%;
+	font-size: 1.5rem;
+	margin: 0 0 15px 0;
+	padding: 0;
+	box-shadow: none;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	transition: all .3s;
+	 margin-left: 3rem;
+	width: 92%;
+	width: calc(100% - 3rem);
+}
+.input-field .prefix ~input:focus:not([readonly]) {
+	  border-bottom: 1px solid #26a69a;
+	 box-shadow: 0 1px 0 0 #26a69a;
+}
+.input-field .prefix .active {
+	color: #26a69a;
+}
+.input-field label {
+	color: #9e9e9e;
+	position: absolute;
+	top: 0.8rem;
+	left: 0.75rem;
+	font-size: 1.2rem;
+	cursor: text;
+	font-weight: normal;
+	-webkit-transition: .2s ease-out;
+	-moz-transition: .2s ease-out;
+	-o-transition: .2s ease-out;
+	-ms-transition: .2s ease-out;
+	transition: .2s ease-out;
+}
+.input-field label:after {
+	display: block;
+	content: "";
+	position: absolute;
+	top: 65px;
+	opacity: 0;
+	transition: .2s opacity ease-out,.2s color ease-out;
+}
+.input-field .prefix ~ label {
+	margin-left: 4rem;
+}
+.tweak {
+	color: #ff5252;
+}

@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "OutStationDutyDetails";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<link href="~/Content/Customcss/style.css" rel="stylesheet" />
+<link href="~/Content/Customcss/tblStyle.css" rel="stylesheet" />
+<script src="~/AppJs/HumanResourceManagement/OutStationDutyDetails.js"></script>
+
+<div class="panel panel-primary">
+    <div class="panel panel-heading">Out Station Duty Details</div>
+    <div class="panel panel-body">
+        <div class="form-group row">
+            <label class="col-md-2"> Financial Year</label>
+            <div class="col-md-4">
+                <select class="form-control" id="ddlFinalcialYear">
+                    <option value=""></option>
+                </select>
+            </div>
+            <label class="col-md-2"> Month</label>
+            <div class="col-md-4">
+                <select class="form-control select2" id="ddlMonth">
+                    <option value="-1">All</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+        </div>
+
+        <table class="table table-bordered tblHeader tblbody" id="gvHolidayHistory" style="text-align: center">
+            <thead style="text-align: center">
+                <tr>
+                    <th>SL</th>
+                    <th>From Date</th>
+                    <th>To Date</th>
+                    <th>Number of Days</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center"></tbody>
+
+        </table>
+    </div>
+
+</div>
+

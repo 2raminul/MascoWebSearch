@@ -1,0 +1,94 @@
+﻿    
+@{
+    Layout = "~/Views/Shared/_layoutA4.cshtml";
+    ViewBag.Title = "Leave Application";
+}
+<style>
+        .date {
+            border: none;
+        }
+
+        .row {
+            margin-top: 10px;
+        }
+    </style>
+
+    <div style="margin-bottom:15px;">
+        <div class="row" style="text-align:center">
+            <div class="col-md-2">
+                <img src="~/Content/Images/MascoLogo.png" height="95" width="75" style="text-align:left;" />
+            </div>
+            <div class="col-md-10" style="padding-left:1px;">
+                <h4 style="display:inline" id="unitName"></h4>
+                <p id="unitAddress"></p>
+                <h5><spn style="border:1px solid black;padding-left: 35px;padding-right: 35px;padding-bottom: 7px;padding-top: 7px;">OUT STATION DUTY CLEARANCE</spn></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="text-align:left;">
+                <label class="label">ID: <span id="empId">123455</span></label><br />
+                <label class="label">Section: <span id="empSection">Section</span></label><br />
+                <label class="label">Duty Date: <input type="text" class="date" id="txtDate" style="border-bottom:1px black dashed;" /></label>
+            </div>
+            <div class="col-md-6" style="">
+                <label class="label">Name: <span id="empName">name</span></label><br />
+                <label class="label">Designation: <span id="empDesignation">Designation</span></label><br />
+                <label class="label">
+                    Time from: <input type="text" id="txtTimeFrom" class="date" style="border-bottom:1px black solid;width:50px;" />
+                    am/pm to <input type="text" id="txtTimeTo" class="date" style="border-bottom:1px black solid;width:50px;" /> am/pm
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="label">Duty Place: </label><br />
+                <label class="label">If in house please mention the unit(s) name and/or if outside please mention the place name-</label>
+                <input type="text" class="date" id="dutyPlace1" style="border-bottom:1px black solid;width:100%;" />
+                <input type="text" class="date" id="dutyPlace2" style="border-bottom:1px black solid;width:100%;margin-top:15px;" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="label">Reason: </label>
+                <input type="text" class="date" id="txtReason" style="border-bottom:1px black solid;width:90%;margin-top:15px;" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="label">Concern Person's Name &amp; Designation: </label>
+                <input type="text" class="date" id="txtConcernPersonDesignation" style="border-bottom:1px black dotted;width:100%" />
+            </div>
+        </div>
+        <div class="row divSign">
+            <div class="col-md-4">
+                <div style="border:1px solid black;height:150px;vertical-align:bottom;text-align:center;">
+                    <hr style="margin-top:93px;border-top: 1px solid rgb(19, 18, 18) !important;" />
+                    <label class="label">Employee Sign &amp; Date </label>
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <div style="border:1px solid black;height:150px;vertical-align:bottom;text-align:center;">
+                    <hr style="margin-top:93px;border-top: 1px solid rgb(19, 18, 18) !important;" />
+                    <label class="label">Authorized Person Sign &amp; Date </label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        @Html.Partial("_layoutPageButton")
+    </div>
+    @section scripts
+{
+        <script type="text/javascript">
+            var base = '@Url.Content("~/")';
+            $.getScript('../AppJs/Document%20Download%20Section/OutstationDutyForm.js',
+                   function (data, textStatus, jqxhr) {
+                       console.log('Script File Load Status=' + jqxhr.status);
+                   });
+        </script>
+    }

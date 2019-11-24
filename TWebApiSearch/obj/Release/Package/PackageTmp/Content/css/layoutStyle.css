@@ -1,0 +1,137 @@
+﻿ .logOut {
+     color: white;
+     font-size: 22px;
+     padding-top: 15px;
+     padding-left: 800px;
+     cursor: pointer;
+ }
+
+ .logOut:hover {
+     color: white;
+ }
+
+ body {
+     padding-top: 0px;
+     padding-bottom: 0px;
+     font-family: 'Nunito Sans' !important;
+ }
+
+ .dropdown-menu {
+     padding: .5rem;
+     border-radius: 0;
+     border-bottom-left-radius: 3px;
+     border-bottom-right-radius: 3px;
+     width: 100%;
+     margin-top: 0.6em !important;
+     text-align: center !important;
+     background: #072542d6 !important;
+     color: whitesmoke !important;
+ }
+ .dropdown-content {
+         display: none;
+    position: absolute;
+    background-color: #cccccc;
+    min-width: 212px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    /*margin-top: 10px;*/
+    transition-timing-function: ease-out;
+    margin-left: 10px;
+    transition: 0.2s;
+  /*display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 212px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;*/
+}
+        .dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+      text-align: center;
+}
+        .dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+ /*.dropdown-item {
+     background: transparent !important;
+     color: whitesmoke !important;
+ }
+
+ .dropdown-item:hover {
+     background: whitesmoke !important;
+     color: #072542 !important;
+ }
+
+ .dropdown-menu:hover {
+     background: #1abc9c !important;
+     color: #072542 !important;
+ }
+
+ .dropdown-menu:hover .dropdown-item {
+     background: #1abc9c !important;
+     color: whitesmoke !important;
+ }*/
+
+ #searchPage {
+     display: inline-block;
+     transform: translateY(120%);
+     width: 40%;
+ }
+ .nav-link {
+     padding-bottom: 0px !important;
+     padding-top: 0px !important;
+ }
+
+ .bg-blue {
+            
+     background: #072542 !important;
+ }
+
+ #pos-footer {
+     position: absolute;
+     bottom: 0px;
+     width: 100%;
+     padding: 0 10px;
+ }
+ hr {
+     margin-top: 0.5rem;
+     margin-bottom: 0.5rem;
+ }
+ .w3-animate-top {
+     position:relative;
+     animation: animatetop 0.6s;
+ }
+ @keyframes animatetop {
+     from {
+         top:-300px;
+         opacity: 0;
+     } 
+     to {
+         top:0;
+         opacity: 1;
+     }}
+ .navbar {
+     padding: 0 10px !important;
+ }
+ @media only screen and (min-width:480px ) and  (max-width: 1366px){
+     #searchPage {
+         display: inline-block;
+         transform: translateY(90%);
+         width: 50%;
+     }
+ }
+ @media only screen and (min-width:300px ) and  (max-width: 1000px){
+     #searchPage {
+         display: inline-block;
+         transform: translateY(90%);
+         width: 65%;
+     }
+ }

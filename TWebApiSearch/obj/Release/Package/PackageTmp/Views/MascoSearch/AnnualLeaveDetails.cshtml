@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "AnnualLeaveDetails";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link href="~/Content/Customcss/style.css" rel="stylesheet" />
+<link href="~/Content/Customcss/tblStyle.css" rel="stylesheet" />
+
+<div class="panel panel-primary">
+    <div class="panel panel-heading">Annual Leave Details</div>
+    <div class="panel panel-body">
+        <div class="form-group row">
+            <label class="col-md-2" for="ddlFinalcialYear"> Financial Year</label>
+            <div class="col-md-4">
+                <select class="form-control" id="ddlFinalcialYear"></select>
+            </div>
+        </div>
+
+
+        <table class="table table-bordered tblHeader tblbody" id="tblAnnualLeaveDetails" style="text-align: center">
+            <thead style="text-align: center">
+            <tr>
+                <th>Number of Leave Day</th>
+                <th>Per Day Amount</th>
+                <th>Total Amount</th>
+            </tr>
+            </thead>
+            <tbody style="text-align: center"></tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        var base = '@Url.Content("~/")';
+        $.getScript('../AppJs/HumanResourceManagement/AnnualLeaveDetails.js',
+        function (data, textStatus, jqxhr) {
+            console.log('Script File Load Status=' + jqxhr.status);
+        });
+    
+    </script>
+}

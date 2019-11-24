@@ -1,0 +1,559 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee's Communicatin Portal";
+}
+
+<link href="~/Content/css/select2.css" rel="stylesheet" />
+<script src="~/Scripts/select2.js"></script>
+<link href="~/Content/css/select2.min.css" rel="stylesheet" />
+<script src="~/Scripts/select2.min.js"></script>
+<style type="text/css">
+    .table {
+        width: 99%;
+        max-width: 99%;
+
+    }
+
+    tbody {
+        display: block;
+        /*height: 310px !important;*/
+        width: 100%;
+        /*overflow: auto;*/
+    }
+
+        thead, tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed !important;
+        }
+
+    /*@@media only screen and (min-width:1523px ) and (max-width: 1700px) {
+
+        tbody {
+            width: 101.35%;
+        }
+    }
+
+    @@media only screen and (min-width:1450px ) and (max-width: 1522px) {
+
+        tbody {
+            width: 101.45%;
+        }
+    }
+
+    @@media only screen and (min-width:1367px ) and (max-width: 1451px) {
+
+        tbody {
+            width: 101.55%;
+        }
+    }
+
+    @@media only screen and (min-width:1000px ) and (max-width: 1366px) {
+
+        tbody {
+            width: 100% !important;
+        }
+    }*/
+
+
+    #pos-footer {
+    display:none;
+}
+
+    /*.select2-selection select2-selection--single{
+        width:320px !important;
+    }*/
+
+</style>
+<div class="panel panel-primary">
+    <div class="panel-heading">Employee's Communication Portal</div>
+    <div class="panel-body">
+        @*<div class="container">*@
+            @*<form role="form">*@
+            <div class="row">
+                <div class="offset-md-4 col-md-6">
+                    <div class="form-group row">
+                        <div class="col-sm-1">
+                            <input type="radio" id="radEmpD" name="Employee" value="Defult" checked="checked" />
+                        </div>
+                        <div class="col-sm-5">
+                            <label class="radio-inline">
+                                Individual Employee
+                            </label>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="radio" id="radEmpA" name="Employee" value="All" />
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                All Employee
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            @*<div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">Unit Name</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" id="ddlUnit"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">Employee Name</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" id="ddlEmployee"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            @*<div class="row">
+                    <div class="col-md-10">
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">Employee Name</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="ddlEmployee"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 control-label" style="text-align:right;">Unit Name</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="ddlUnit"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4">Employee Name</label>
+                        <div class="col-sm-8 ">
+                            <select class="form-control" id="ddlEmployee"></select>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-4">Section</label>
+                            <div class="col-sm-8 ">
+                                <select class="form-control" id="ddlSection"></select>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+            <div class="text-center">
+                <div id="Divprint" style="overflow:auto; max-height: 350px;">
+                    <table class="table table-bordered" id="tblEmployeeList" style="text-align: center;">
+                        <thead style="width:100%">
+                            <tr>
+                                <th style="width:4%">SL</th>
+                                <th style="width:7%">ID</th>
+                                <th style="width:15%">Name</th>
+                                <th style="width:10%">Designation</th>
+                                <th style="width:10%">Section</th>
+                                <th style="width:10%">Personal No</th>
+                                <th style="width:10%">Personal No</th>
+                                <th style="width:10%">Office No</th>
+                                <th style="width:10%">E-mail</th>
+                                <th style="width:5%">IP</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+            </div>
+            @*</form>*@
+        </div>
+    <div class="form-group row" style="margin-top:0.5rem;margin-bottom:0.5rem;">
+        <div class="col-md-12 text-center">
+            <button type="button" id="btnPrint" class="btn btn-print">Print And Preview</button>
+        </div>
+    </div>
+   
+</div>
+
+    @*<div class="panel-footer">
+        <div class="form-group row" style="margin-top:0.5rem;margin-bottom:0.5rem;">
+            <div class="col-md-12 text-center">
+                <button type="button" id="btnPrint" class="btn btn-print">Print And Preview</button>
+            </div>
+        </div>
+    </div>*@
+@*</div>*@
+
+
+
+
+<script>
+    var abc = 'Def';
+    $(document).ready(function () {
+        DefultLoginEmployee(abc);
+        GetUnitList();
+      //  LoadAllDesignation();
+       // LoadAllSection();
+        $("#ddlUnit").select2();
+        $("#ddlEmployee").select2();
+      //  $("#ddlDesignation").select2();
+       // $("#ddlSection").select2();
+
+
+    });
+
+    $("#btnPrint").click(function () {
+        var pwindow = window.open('', 'Print', 'width=800,status=yes,toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no');
+        pwindow.document.write('<html><head><title></title>');
+        pwindow.document.write('<style>.boldText {font-weight: bold;}th, td {padding: 10px; }label {font-weight: bold;font-family: Gill Sans Extrabold, sans-serif;}input{border:1px solid;}</style>');
+
+        pwindow.document.write('</head><body>');
+        pwindow.document.write(document.getElementById('Divprint').innerHTML);
+        setTimeout(function () {
+            pwindow.print();
+            pwindow.close();
+        }, 1000)
+    })
+
+    function GetUnitList() {
+
+        $.ajax({
+            url: '@Url.Action("GetUnitList", "MascoSearch")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function(results) {
+                $('#ddlUnit').get(0).options.length = 0;
+                $('#ddlUnit').get(0).options[0] = new Option('Select----------', '');
+
+                $.map(results.Data, function(item) {
+                    $('#ddlUnit').get(0).options[$('#ddlUnit').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlUnit').val(results.SelectedVal);
+                let unit = $('#ddlUnit').val();
+
+            },
+            error: function(data) {
+
+            }
+
+
+        });
+    }
+
+    @*function LoadAllDesignation() {
+
+        $.ajax({
+            url: '@Url.Action("LoadAllDesignation", "MascoSearch")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#ddlDesignation').get(0).options.length = 0;
+                $('#ddlDesignation').get(0).options[0] = new Option('Select---------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlDesignation').get(0).options[$('#ddlDesignation').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlDesignation').val(results.SelectedVal);
+                let unit = $('#ddlDesignation').val();
+
+            },
+            error: function (data) {
+
+            }
+
+
+        })
+    }
+
+    function LoadAllDesignationUnitWise(unit) {
+
+        $.ajax({
+            url: '@Url.Action("LoadAllDesignationUnitWise", "MascoSearch")',
+            type: "POST",
+            data: JSON.stringify({ "unit": unit }),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#ddlDesignation').get(0).options.length = 0;
+                $('#ddlDesignation').get(0).options[0] = new Option('Select----------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlDesignation').get(0).options[$('#ddlDesignation').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlDesignation').val(results.SelectedVal);
+                let unit = $('#ddlDesignation').val();
+            },
+            error: function (data) {
+
+            }
+
+
+        })
+    }
+
+
+    function LoadAllSection() {
+
+        $.ajax({
+            url: '@Url.Action("LoadAllSection", "MascoSearch")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#ddlSection').get(0).options.length = 0;
+                $('#ddlSection').get(0).options[0] = new Option('Select----------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlSection').get(0).options[$('#ddlSection').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlSection').val(results.SelectedVal);
+                let unit = $('#ddlSection').val();
+
+                // GetAdvanceHistory(finalcialYear);
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+
+    function LoadAllSectionUnitWise(unit) {
+
+        $.ajax({
+            url: '@Url.Action("LoadAllSectionUnitWise", "MascoSearch")',
+            type: "POST",
+            data: JSON.stringify({ "unit": unit }),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#ddlSection').get(0).options.length = 0;
+                $('#ddlSection').get(0).options[0] = new Option('Select--------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlSection').get(0).options[$('#ddlSection').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlSection').val(results.SelectedVal);
+                let unit = $('#ddlSection').val();
+
+                // GetAdvanceHistory(finalcialYear);
+            },
+            error: function (data) {
+
+            }
+
+
+        })
+    }*@
+
+
+
+    $('#ddlUnit').change(function () {
+
+        let unit = $(this).val();
+        if (unit == "") { }
+        else {
+
+            loadUnitWiseEmployee(unit);
+            GetUnitWiseEployeeList();
+          //  LoadAllDesignationUnitWise(unit);
+          //  LoadAllSectionUnitWise(unit);
+        }
+    });
+
+    //$('#ddlDesignation').change(function () {
+
+    //    let aa = $(this).val();
+    //    if (aa == "") { }
+    //    else {
+    //        GetUnitWiseEployeeList();
+    //    }
+    //});
+
+    //$('#ddlSection').change(function () {
+
+    //    let aa = $(this).val();
+    //    if (aa == "") { }
+    //    else {
+    //        GetUnitWiseEployeeList();
+    //    }
+    //});
+
+    $('#ddlEmployee').change(function () {
+        debugger;
+        let aa = $(this).val();
+        //if (aa == "") { }
+        //else {
+            GetUnitWiseEployeeList();
+      //  }
+    });
+
+    function loadUnitWiseEmployee(unit) {
+        $.ajax({
+            url: '@Url.Action("loadUnitWiseEmployee", "MascoSearch")',
+            type: "POST",
+            data: JSON.stringify({ "unit": unit }),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $('#ddlEmployee').get(0).options.length = 0;
+                $('#ddlEmployee').get(0).options[0] = new Option('Select----------------', '');
+
+                $.map(results.Data, function (item) {
+                    $('#ddlEmployee').get(0).options[$('#ddlEmployee').get(0).options.length] = new Option(item.Text, item.ID);
+                });
+
+                $('#ddlEmployee').val(results.SelectedVal);
+                let emp = $('#ddlEmployee').val();
+
+
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+
+    function DefultLoginEmployee(Id) {
+
+        $.ajax({
+            url: '@Url.Action("DefultLoginEmployee", "MascoSearch")',
+            type: "POST",
+            data: JSON.stringify({ "Id": Id }),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $("#tblEmployeeList tbody").empty();
+                //B.BonusTypeName,F.BonusAmount,F.BonusMonthName
+                var ddd = JSON.parse(results)
+                for (var i = 0; i < ddd.length; i++) {
+                    let tr = "<tr>";
+                    tr += "<td style='width:4%'>" + ddd[i].RowId + "</td>";
+                    tr += "<td style='width:7%'>" + ddd[i].EMP_CODE + "</td>";
+                    tr += "<td style='width:15%'>" + ddd[i].EMP_ENAME + "</td>";
+                    tr += "<td  style='width:10%'>" + ddd[i].DesigEName + "</td>";
+                    tr += "<td  style='width:10%'>" + ddd[i].SectEName + "</td>";
+                    tr += "<td style='width:10%'>" + ddd[i].PersonalMobile + "</td>";
+                    tr += "<td style='width:10%'>" + ddd[i].PerMobile + "</td>";
+                    tr += "<td style='width:10%'>" + ddd[i].OffceMobile + "</td>";
+                    tr += "<td style='width:10%; word-wrap: break-word;'>" + ddd[i].Email + "</td>";
+                    tr += "<td style='width:5%'>" + ddd[i].IP + "</td>";
+                    tr += "</tr>";
+                    $("#tblEmployeeList tbody").append(tr);
+                }
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+
+    function GetUnitWiseEployeeList() {
+        var unit = $('#ddlUnit').val();
+        var desId = $('#ddlDesignation').val();
+        var sec = $('#ddlSection').val();
+        var empCode = $('#ddlEmployee').val();
+        $.ajax({
+            url: '@Url.Action("GetUnitWiseEployeeList", "MascoSearch")',
+            type: "POST",
+            data: JSON.stringify({ "unit": unit, "desId": desId, "section": sec, "empCode": empCode }),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (results) {
+                $("#tblEmployeeList tbody").empty();
+                //B.BonusTypeName,F.BonusAmount,F.BonusMonthName
+                var ddd = JSON.parse(results)
+                for (var i = 0; i < ddd.length; i++) {
+                    let tr = "<tr>";
+                    tr += "<td style='width:4%'>" + ddd[i].RowId + "</td>";
+                    tr += "<td style='width:7%'>" + ddd[i].EMP_CODE + "</td>";
+                    tr += "<td style='width:15%'>" + ddd[i].EMP_ENAME + "</td>";
+                    tr += "<td style='width:10%'>" + ddd[i].DesigEName + "</td>";
+                    tr += "<td style='width:10%'>" + ddd[i].SectEName + "</td>";
+                    tr += "<td style='width:10%'>" + ddd[i].PersonalMobile + "</td>";
+                    tr += "<td style='width:10%'>" + ddd[i].PerMobile + "</td>";
+                    tr += "<td style='width:10%'>" + ddd[i].OffceMobile + "</td>";
+                    tr += "<td style='width:10%; word-wrap: break-word;'>" + ddd[i].Email + "</td>";
+                    tr += "<td style='width:5%'>" + ddd[i].IP + "</td>";
+                    tr += "</tr>";
+                    $("#tblEmployeeList tbody").append(tr);
+                }
+            },
+            error: function (data) {
+
+            }
+
+
+        });
+    }
+
+
+    @*function GetUnitWiseEployeeList(unit) {
+
+            $.ajax({
+                url: '@Url.Action("GetAdvanceHistory", "MascoSearch")',
+                type: "POST",
+                data: JSON.stringify({ "finalcialYear": finalcialYear}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (results) {
+                    $("#gvAdvanceHistory tbody").empty();
+                    //AdvMonth	PaidAmt
+                    var ddd = JSON.parse(results)
+                    for (var i = 0; i < ddd.length; i++) {
+                        let tr = "<tr>";
+                        tr += "<td>" + ddd[i].AdvMonth + "</td>";
+                        tr += "<td>" + ddd[i].PaidAmt + "</td>";
+                        tr += "</tr>";
+                        $("#gvAdvanceHistory tbody").append(tr);
+                    }
+                },
+                error: function (data) {
+
+                }
+
+
+            })
+        }*@
+
+
+    $("#radEmpA").change(function () {
+        if ($("#radEmpA").is(":checked")) {
+            DefultLoginEmployee('All');
+            GetUnitList();
+            $("#ddlUnit").select2();
+            document.getElementById('ddlEmployee').options.length = 0;
+
+        }
+
+    });
+
+    $("#radEmpD").change(function () {
+        if ($("#radEmpD").is(":checked")) {
+            DefultLoginEmployee('Def');
+            GetUnitList();
+            $("#ddlUnit").select2();
+            document.getElementById('ddlEmployee').options.length = 0;
+        }
+
+    });
+
+</script>

@@ -1,0 +1,278 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+    <link rel="shortcut icon" href="~/Content/Images/Masco.jpg">
+    <title>Sign Up::Masco Web Search</title>
+    @*<link href="~/Content/css/styles.css" rel="stylesheet" />*@
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <link href="~/Content/css/logIn.css" rel="stylesheet" />
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-3.2.1.js")"></script>
+    
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/select2.min.js")"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/AppJs/SignUp.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <style>
+        .side-note {
+            font-weight: normal;
+            font-size: 11px;
+            color: midnightblue;
+        }
+
+        /*body {
+            height: 100% !important;
+            background: aliceblue !important;
+            background-image: url('../../Content/Images/3.jpg');
+            background-image: url('../../Content/Images/lightbulb-on-chalkboard-720x520.jpg') !important;
+            background-repeat: no-repeat;
+            background-size: 100% auto !important;
+        }*/
+        body {
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            background: linear-gradient(-45deg,  #800080,#EE7752, #23A6D5, #23D5AB);
+            background-size: 400% 400%;
+            -webkit-animation: Gradient 15s ease infinite;
+            -moz-animation: Gradient 15s ease infinite;
+            animation: Gradient 15s ease infinite;
+            color: #333;
+        }
+
+        @@-webkit-keyframes Gradient {
+            0% {
+                background-position: 0% 50%
+            }
+            50% {
+                background-position: 100% 50%
+            }
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        @@-moz-keyframes Gradient {
+            0% {
+                background-position: 0% 50%
+            }
+            50% {
+                background-position: 100% 50%
+            }
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        @@keyframes Gradient {
+            0% {
+                background-position: 0% 50%
+            }
+            50% {
+                background-position: 100% 50%
+            }
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        label.error {
+            color: red;
+            padding-top: 30px;
+        }
+        .logo {
+            padding-top: 2%;
+        }
+        .red-tooltip + .tooltip > .tooltip-inner {background-color: #ff5252 !important;}
+        .red-tooltip + .tooltip > .tooltip-arrow { border-top-color:#ff5252 !important; }
+
+        @@media only screen and (min-width:480px ) and  (max-width: 1366px){
+            #divSignUp {
+                top: 3.5%;
+            }
+            .form-group {
+                margin-bottom: 3% !important;
+            }
+            .logo {
+                padding-top: 0%;
+            }
+            #btnRequest {
+                margin-top: 0;
+            }
+        }
+        .select2-container--default .select2-selection--single {
+     background-color: transparent;
+    border-bottom: 1px solid #aaa;
+    border-radius: 4px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+        .borderControlSelect2{
+             background-color: transparent;
+    border-bottom: 1px solid #aaa;
+    border-radius: 4px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+        }
+        .prefix {
+	position: absolute;
+	width: 3rem;
+	font-size: 2rem;
+	-webkit-transition: color .2s;
+	-moz-transition: color .2s;
+	-o-transition: color .2s;
+	-ms-transition: color .2s;
+	transition: color .2s;
+	padding-top: 6px;
+}
+     
+    </style>
+    @*<script src="~/Scripts/jquery-3.2.1.min.js"></script>*@
+    
+</head>
+<body>
+<div id="background">
+    <div class="container">
+        <div id="divSignUp">
+            <div id="div-signup-box">
+                <div class="logo">
+                    <img src="../../Content/Images/MascoLogo.png" class="img img-responsive center-block" style="width: 14%"/>
+                    <h4 class="logo-caption text-center"><span class="tweak">R</span>equest for new user</h4>
+                    @*<h4 class="logo-caption text-center"><span class="tweak">S</span>ign Up</h4>*@
+                </div>
+                <form id="formSignUp" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-1"><i class="fa fa-building prefix"></i></label>
+                        <div class="col-sm-11">
+                            <select id="ddlUnit" class="form-control" name="unitId"></select>
+                        </div>
+                    </div>
+                    <div class="form-group red-tooltip" data-toggle="tooltip" title="It's your login ID" >
+                        <label class="col-md-1"><i class="fa fa-id-badge prefix"></i></label>
+                        <div class="col-sm-11">
+                            <select id="ddlEmpId" class="form-control borderControlSelect2" name="EmpId"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1"><i class="fa fa-user-o prefix"></i></label>
+                        <div class="col-sm-11 input-field">
+                            <input type="text" id="txtEmpName" class="form-control" placeholder="Employee Name" name="EmpName" disabled="disabled"/>
+                            @*<label for="txtEmpName" class="text-center">Employee Name</label>*@
+                        </div>
+                    </div>
+                    <div class="form-group red-tooltip" data-toggle="tooltip" title="If you don't see your Email, please type it here for communication">
+                        <label class="col-md-1"><i class="fa  fa-envelope prefix"></i></label>
+                        <div class="col-sm-11 input-field">                            
+                            <input type="email" id="txtEmail" class="form-control" placeholder="someone@mascoknit.com" name="Email"/>
+                            @*<label for="txtEmail" class="text-center">Office E-mail</label>*@
+                        </div>
+                        @*<label class="col-sm-5 side-note">If you don't see your Email,please type it here for communication</label>*@
+                    </div>
+                    <div class="form-group red-tooltip" data-toggle="tooltip" title="If you don't see your Number, please type it here for communication">
+                        <label class="col-md-1"><i class="fa fa-phone prefix"></i></label>
+                        <div class="col-sm-11 input-field">
+                            <input type="text" id="txtOfcCell" class="form-control" placeholder="Office Cell" name="OfficeCell"/>
+                            @*<label for="txtOfcCell" class="text-center">Office Cell</label>*@
+                        </div>
+                        @*<label class="col-sm-5 side-note">If you don't see your Number,please type it here for communication</label>*@
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1"><i class="fa fa-lock prefix"></i></label>
+                        <div class="col-sm-11 input-field">
+                            <input type="password" id="txtPass" class="form-control" placeholder="Password" name="PassWord"/>
+                            @*<label for="txtPass" class="text-center">@*Password</label>*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1"><i class="fa fa-unlock-alt prefix"></i></label>
+                        <div class="col-sm-11 input-field">                            
+                            <input type="password" id="txtConfirmPass" class="form-control" placeholder="Confirm Password" name="confirm_password"/>
+                            @*<label for="txtConfirmPass" class="text-center">Confirm Password</label>*@
+                        </div>
+                        @*<label class="col-sm-5" id="lblConfirmPass" style="color:red"></label>*@
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-warning btn-block btn-custom" id="btnLogin" style="padding: 10px 0px;">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            Back to Main</button>
+                            @*<input type="button" id="btnRequest1" value="Send Request" class="btn btn-default btn-block btn-custom" />*@
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-warning btn-block btn-custom" id="btnRequest" >                               
+                                Send Request
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
+</script>
+<script type="text/javascript">
+    loadUnit('@Url.Action("LoadUnitDropDown", "LogIn")');
+
+    $('#ddlUnit').on('change', function() {
+        var unitNo = $('#ddlUnit option:selected').val();
+        loadEmpId('@Url.Action("LoadEmpIdByUnit", "LogIn")', unitNo);
+    });
+    $('#ddlEmpId').on('change', function() {
+        var empId = $('#ddlEmpId option:selected').val();
+        loadEmpInfo('@Url.Action("LoadEmpInfoByUnit", "LogIn")', empId);
+    });
+
+    $('#btnRequest').on('click', function () {
+        if ($('#ddlEmpId option:selected').val() != undefined && $('#txtEmail').val() !="") {
+            var objUser = new Object();
+            objUser.EmpId = $('#ddlEmpId option:selected').val();
+            objUser.EmpCode = $('#ddlEmpId option:selected').text();
+            objUser.OfficeMail = $('#txtEmail').val();
+            objUser.OfficeCell = $('#txtOfcCell').val() != undefined ? $('#txtOfcCell').val() : "";
+            if ($('#txtPass').val() == $('#txtConfirmPass').val()) {
+                objUser.PassWord = $('#txtPass').val();
+            } else {
+                $('#lblConfirmPass').text('Password doesn\'t  match');
+            }
+            if (objUser.PassWord == "" && objUser.EmpId == undefined) {
+                window.location.href = "/LogIn/LogIn";
+            } else {
+                saveUser('@Url.Action("SaveUser", "LogIn")', objUser);
+            }
+        } else {
+            //swal({                
+            //    title: "Please Fillup Your Information!",
+            //    icon: "warning",
+            //});
+            swal("Please Fillup Your Information!", "", "info");
+           // swal("Please Fillup Your Information");
+        }
+    });
+    $('#btnLogin').on('click', function () {
+            window.location.href = "/LogIn/LogIn";
+    });
+
+</script>
+</body>
+</html>

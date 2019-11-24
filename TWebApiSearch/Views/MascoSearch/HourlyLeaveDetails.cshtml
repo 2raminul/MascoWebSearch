@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "HourlyLeaveDetails";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<link href="~/Content/Customcss/style.css" rel="stylesheet" />
+<link href="~/Content/Customcss/tblStyle.css" rel="stylesheet" />
+<script src="~/AppJs/HumanResourceManagement/HourlyLeaveDetails.js"></script>
+
+<div class="panel panel-primary">
+    <div class="panel panel-heading">Hourly Leave Details</div>
+    <div class="panel panel-body">
+        <div class="form-group row">
+            <label class="col-md-2"> Financial Year</label>
+            <div class="col-md-4">
+                <select class="form-control" id="ddlFinalcialYear">
+                    <option value=""></option>
+                </select>
+            </div>
+            <label class="col-md-2"> Month</label>
+            <div class="col-md-4">
+                <select class="form-control " id="ddlMonth">
+                    <option value="-1">All</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+        </div>
+        <table class="table table-bordered tblHeader tblbody" id="gvHolidayHistory" style="text-align: center">
+            <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>HL Date</th>
+                    <th>From Time</th>
+                    <th>To Time</th>
+                    <th>Total Time(HH:MM)</th>
+                    <th>Reason</th>
+                    <th>Apply Date</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center"></tbody>
+           
+        </table>
+    </div>
+
+</div>
+
+
+
+
